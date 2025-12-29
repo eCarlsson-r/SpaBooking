@@ -5,23 +5,32 @@ type Rating = {
   count: number
 }
 
-export type Product = {
+export type Treatment = {
   id: number
-  title: string
-  price: string
+  name: string
+  price: number
   description: string
   category: string
   image: string
   imageOptimized?: ImageOptimized
-  rating: Rating
-  badge: string
-  shipping: string
 }
 
-export type Products = Product[]
+export type Treatments = Treatment[]
+
+export type Category = {
+  id: string
+  name: string
+  description: string
+  header_img: string
+  body_img1: string
+  body_img2: string
+  body_img3: string,
+  treatment: Treatment[]
+}
+
+export type Categories = Category[]
 
 export type Store = {
-  products: Products
-  categories: string[]
-  badges: string[]
+  treatments: Treatments
+  categories: Categories
 }

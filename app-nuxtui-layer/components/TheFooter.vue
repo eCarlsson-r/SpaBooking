@@ -2,43 +2,10 @@
   // ...
 </script>
 <template>
-  <footer class="pb-24 pt-12">
-    <div class="container mx-auto px-8">
-      <div class="flex flex-wrap justify-center space-x-8">
-        <NuxtLink
-          href="https://www.facebook.com/vuedesigner"
-          aria-label="facebook"
-          external
-          target="_blank"
-        >
-          <UIcon name="i-logos-facebook" class="text-2xl" width="28px" />
-        </NuxtLink>
-        <NuxtLink
-          href="https://twitter.com/vuedesigner"
-          aria-label="twitter"
-          external
-          target="_blank"
-        >
-          <UIcon name="i-logos-twitter" class="text-2xl" width="28px" />
-        </NuxtLink>
-        <NuxtLink
-          href="https://discord.gg/BYp45Nnu5T"
-          aria-label="discord"
-          external
-          target="_blank"
-        >
-          <UIcon name="i-logos-discord-icon" class="text-2xl" width="28px" />
-        </NuxtLink>
-        <NuxtLink
-          href="https://www.youtube.com/@vuedesigner"
-          aria-label="youtube"
-          external
-          target="_blank"
-        >
-          <UIcon name="i-logos-youtube-icon" class="text-2xl" width="28px" />
-        </NuxtLink>
+  <footer>
+      <div class="bg-yellow-900 py-4 text-center text-sm text-white border-t border-white/10">
+        Spa Premier WebApp © 2025 - {{ new Date().getFullYear() }}. All Rights Reserved
       </div>
-    </div>
-  </footer>
+    </footer>
 </template>
 <style scoped></style>

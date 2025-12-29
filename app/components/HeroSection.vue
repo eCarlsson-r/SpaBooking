@@ -11,7 +11,7 @@ if (error.value) {
 }
 </script>
 <template>
-  <div class="relative w-full overflow-hidden rounded-xl shadow-lg group">
+  <div class="relative w-full overflow-hidden shadow-lg group">
     <UCarousel
       v-slot="{ item }"
       :items="banners"
