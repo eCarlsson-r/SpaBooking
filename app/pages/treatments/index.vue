@@ -1,21 +1,19 @@
 <template>
   <div class="p-8">
     <h1 class="text-3xl font-bold mb-6">Our Treatment Categories</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <NuxtLink 
-        v-for="cat in categories" 
-        :key="cat.id" 
-        :to="`/treatments/${cat.id}`"
-        class="border rounded-lg p-4 hover:shadow-lg transition"
-      >
-        <img :src="`${$config.public.serverURL}${cat.header_img}`" class="rounded mb-2" >
-        <h4 class="font-bold">{{ cat.name }}</h4>
-      </NuxtLink>
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <CategoryCard v-for="cat in categories" :id="cat.id" :key="cat.id" :name="cat.name" :header_img="cat.header_img" :description="cat.description"/>
     </div>
   </div>
 </template>
 
 <script setup>
 const { $api } = useNuxtApp();
-const { data: categories } = await useAsyncData('categories', () => $api('/category'));
+// useAsyncData is preferred over useFetch when using a custom fetcher
+const { data: categories, refresh: refreshCategories } = await useAsyncData('category', () => $api('/category'))
+
+// Just pass the map of types to their refresh functions
+useRealtimeSync({
+  'category': refreshCategories,
+})
 </script>

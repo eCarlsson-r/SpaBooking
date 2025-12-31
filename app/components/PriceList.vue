@@ -1,23 +1,19 @@
-<script lang="ts">
+<script setup lang="ts">
   import type { Category } from '~~/types/store'
-  export default {
-    props: {
-      categories: {
-        type: Array<Category>,
-        required: true
-      }
+  const props = defineProps({
+    categories: {
+      type: Object,
+      required: true
     },
-    data() {
-      return {
-        selectedCategory: 'B'
-      }
-    },
-    computed: {
-      currentCategoryData() {
-        return this.categories.find((c: Category) => c.id === this.selectedCategory);
-      }
+    user: {
+      type: Object,
+      default: null
     }
-  }
+  })
+  const selectedCategory = ref('B')
+  const currentCategoryData = computed(() => {
+    return props.categories.find((c: Category) => c.id === selectedCategory.value);
+  })
 </script>
 <template>
   <div class="flex min-h-[500px] overflow-hidden bg-white shadow-xl">
@@ -59,14 +55,10 @@
               <p class="font-bold text-gray-800">{{ service.name }}</p>
             </div>
             <div class="text-yellow-900 font-bold">
-              Rp. {{ new Intl.NumberFormat('id-ID').format(service.price) }},-
+              {{ (user) ? `Rp. ${new Intl.NumberFormat('id-ID').format(service.price)},-` : 'Ask Price' }}
             </div>
           </div>
         </div>
-        
-        <UButton class="mt-8 bg-yellow-900 hover:bg-yellow-800" block>
-          BOOK NOW
-        </UButton>
       </div>
     </div>
   </div>

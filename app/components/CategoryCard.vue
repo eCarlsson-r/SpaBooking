@@ -1,26 +1,33 @@
-<script lang="ts">
-  export default {
-      props: {
-        id: Number,
-        name: String,
-        description: String,
-        header_img: String
-      }
-    }
+<script setup lang="ts">
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  header_img: {
+    type: String,
+    required: true
+  }
+})
+const { id, name, description, header_img } = props
 </script>
 <template>
   <NuxtLink
-    class="m-4 relative w-full md:w-1/3 lg:w-1/4 xl:w-1/5"
+    class="m-4 relative w-full"
     :to="`/treatments/${id}`"
     >
     <UCard class="md:h-full">
-      <div class="flex justify-center">
-          <div class="bg-white h-64 rounded-lg">
-            <NuxtImg class="max-h-full" :src="`${$config.public.serverURL}${header_img}`" height="250" />
-          </div>
-      </div>
+      <NuxtImg class="max-h-full" :src="`${$config.public.serverURL}${header_img}`" height="250" />
       <div>
-        <h4>{{ name }}</h4>
+        <h5>{{ name }}</h5>
         <p>{{ description }}</p>
       </div>
     </UCard>

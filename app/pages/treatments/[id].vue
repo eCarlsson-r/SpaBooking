@@ -14,13 +14,13 @@
         <p class="text-gray-600 mb-8">{{ category.description }}</p>
 
         <div class="space-y-4">
-          <div
-            v-for="item in category.treatment" :key="item.id" 
-            class="flex justify-between border-b border-dotted pb-2"
-          >
-            <span class="font-medium">{{ item.name }}</span>
-            <span class="text-[#8B5E1D] font-bold">Rp {{ item.price.toLocaleString() }}</span>
-          </div>
+          <UCard v-for="item in category.treatment" :key="item.id" class="grid grid-cols-3">
+            <NuxtImg :src="`${$config.public.serverURL}${item.image}`" height="250" />
+            <div class="col-span-2">
+              <h5>{{ item.name }}</h5>
+              <span>{{ item.description }}</span>
+            </div>
+          </UCard>
         </div>
       </div>
     </div>

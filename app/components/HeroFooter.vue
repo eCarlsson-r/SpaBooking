@@ -1,23 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
   import type { Category } from '~~/types/store'
-  export default {
-    props: {
-      categories: {
-        type: Array<Category>,
-        required: true
-      }
-    },
-    data() {
-      return {
-        selectedCategory: 'B'
-      }
-    },
-    computed: {
-      currentCategoryData() {
-        return this.categories.find((c: Category) => c.id === this.selectedCategory);
-      }
+  const props = defineProps({
+    categories: {
+      type: Object,
+      required: true
     }
-  }
+  });
 </script>
 <template>
   <div class="relative py-12 px-6 md:px-12 bg-cover bg-center" style="background-image: url('/footer.webp');">
@@ -40,7 +28,7 @@
         <h4 class="text-xs italic text-lime-300">We are providing</h4>
         <h3 class="text-xl font-bold mb-4 uppercase">Services</h3>
         <ul class="text-sm space-y-2">
-          <li v-for="cat in categories" :key="cat.id" class="hover:text-lime-300 cursor-pointer">
+          <li v-for="cat in props.categories" :key="cat.id" class="hover:text-lime-300 cursor-pointer">
             <a :href="`/treatments/${cat.id}`">▶ {{ cat.name }}</a>
           </li>
         </ul>

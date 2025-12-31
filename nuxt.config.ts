@@ -26,7 +26,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: 'http://localhost:8000/api',
-      serverURL: 'http://localhost:8000'
+      serverURL: 'http://localhost:8000',
+      reverbHost: 'localhost',
+      reverbKey: 'sjjg8edoysdzyt5lz9b0' 
     }
   },
 
@@ -230,7 +232,7 @@ export default defineNuxtConfig({
   },
 
   imports: {
-    // dirs: ['my-components'],
+    dirs: ['stores']
   },
 
   vue: {

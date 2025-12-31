@@ -25,13 +25,9 @@ export default {
       { title: 'Treatments', to: '/treatments', icon: 'i-mdi-home' },
       { title: 'Vouchers', to: '/vouchers', icon: 'i-mdi-home' },
       { title: 'Facilities', to: '/facilities', icon: 'i-mdi-home' },
+      { title: 'Contact Us', to: '/contact-us', icon: 'i-material-symbols-add-call' }
     ],
     secondary: [
-      {
-        title: 'Track Order',
-        to: '/track-order',
-        icon: 'i-ic-outline-my-location',
-      },
       {
         title: 'Order History',
         to: '/order-history',
@@ -46,11 +42,6 @@ export default {
         title: 'Delivery Policy',
         to: '/delivery-policy',
         icon: 'i-tabler-truck-return',
-      },
-      {
-        title: 'Contact Us',
-        to: '/contact-us',
-        icon: 'i-material-symbols-add-call',
       },
       {
         title: 'Help & FAQs',

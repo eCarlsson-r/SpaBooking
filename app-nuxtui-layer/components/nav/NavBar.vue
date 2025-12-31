@@ -1,5 +1,16 @@
 <script setup lang="ts">
-  const { isMobileMenuOpen } = useMobileMenu()
+  const {isMobileMenuOpen} = useMobileMenu();
+
+  const props = defineProps({
+    user: {
+      type: Object,
+      default: undefined
+    }
+  });
+
+  const { user } = props;
+
+  const ui = useUIStore();
 </script>
 <template>
   <nav class="container mx-auto px-4">
@@ -21,10 +32,11 @@
       >
         <NavPrimary class="sm:w-full" />
       </div>
-      <div data-pg-name="Profile" class="flex space-x-1">
-        <ProfileActions class="!hidden sm:!flex" />
+      <div v-if="user" data-pg-name="Profile" class="flex space-x-1">
+        <ProfileActions />
         <NavSecondary />
       </div>
+      <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">Sign In / Join Us</UButton>
     </div>
     <USlideover
       v-model="isMobileMenuOpen"

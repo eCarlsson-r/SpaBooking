@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  const { navsSecondary } = useNavMenu()
+  const { navsSecondary } = useNavMenu();
+  const { user, logout } = useAuthStore();
 
   const dropdownItems = [
     [
@@ -26,6 +27,7 @@
       width: 'w-full sm:w-48',
       item: { disabled: 'cursor-text select-text opacity-100' },
     }"
+    :label="'Profile'"
     :items="dropdownItems"
   >
     <UAvatar
@@ -37,7 +39,7 @@
     <template #account>
       <div class="my-1 space-x-1 w-full">
         <ProfileActions class="sm:!hidden" />
-        <UButton class="font-bold my-4 sm:my-2">Sign In / Join Us</UButton>
+        <UButton class="font-bold my-4 sm:my-2" @click="logout">Sign Out</UButton>
       </div>
     </template>
   </UDropdown>
