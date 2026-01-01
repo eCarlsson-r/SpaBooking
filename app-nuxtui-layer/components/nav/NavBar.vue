@@ -1,20 +1,18 @@
 <script setup lang="ts">
   const {isMobileMenuOpen} = useMobileMenu();
 
-  const props = defineProps({
-    user: {
-      type: Object,
-      default: undefined
-    }
-  });
+  // 1. Import your auth store
+  const auth = useAuthStore();
 
-  const { user } = props;
+  // 2. (Optional but recommended) If you need to keep properties reactive 
+  // when destructuring, use storeToRefs
+  const { isLoggedIn } = storeToRefs(auth)
 
   const ui = useUIStore();
 </script>
 <template>
-  <nav class="container mx-auto px-4">
-    <div class="flex h-full items-center justify-between navbar-grid py-4">
+  <nav class="container mx-auto">
+    <div class="flex h-full items-center justify-between py-4">
       <div style="grid-area: logo" class="flex justify-center">
         <TheLogo />
       </div>
@@ -32,7 +30,7 @@
       >
         <NavPrimary class="sm:w-full" />
       </div>
-      <div v-if="user" data-pg-name="Profile" class="flex space-x-1">
+      <div v-if="isLoggedIn" data-pg-name="Profile" class="flex space-x-1">
         <ProfileActions />
         <NavSecondary />
       </div>

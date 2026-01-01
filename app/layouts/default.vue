@@ -14,13 +14,6 @@
       tags: route.meta.tags,
     }
   })
-
-  // 1. Import your auth store
-  const auth = useAuthStore();
-
-  // 2. (Optional but recommended) If you need to keep properties reactive 
-  // when destructuring, use storeToRefs
-  const { user } = storeToRefs(auth)
   
   useHeadAndMeta(pageMeta)
   useOgImage()
@@ -30,16 +23,16 @@
   <div>
     <!-- <div class="container mx-auto"> -->
     <div
-      class="min-h-screen flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
+      class="min-h-screen pb-50 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
     >
-      <NavBar :user="user" />
+      <NavBar class="z-50" />
       <main>
         <slot />
         <Toaster position="top-center" rich-colors close-button />
         <BookingDrawer />
       </main>
       <LoginModal />
-      <TheFooter />
+      <TheFooter class="fixed bottom-0 w-full z-50" />
     </div>
     <!-- </div> -->
   </div>

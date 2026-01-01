@@ -29,25 +29,15 @@ export default {
     ],
     secondary: [
       {
-        title: 'Order History',
-        to: '/order-history',
+        title: 'Profile',
+        to: '/profile',
+        icon: 'i-material-symbols-account-circle-outline',
+      },
+      {
+        title: 'My Bookings',
+        to: '/my-bookings',
         icon: 'i-ic-baseline-history',
-      },
-      {
-        title: 'Returns',
-        to: '/returns',
-        icon: 'i-material-symbols-assignment-return-outline-rounded',
-      },
-      {
-        title: 'Delivery Policy',
-        to: '/delivery-policy',
-        icon: 'i-tabler-truck-return',
-      },
-      {
-        title: 'Help & FAQs',
-        to: '/help-faqs',
-        icon: 'i-material-symbols-contact-support-outline',
-      },
+      }
     ],
   },
 }

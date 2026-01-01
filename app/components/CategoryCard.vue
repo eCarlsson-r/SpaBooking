@@ -25,7 +25,7 @@ const { id, name, description, header_img } = props
     :to="`/treatments/${id}`"
     >
     <UCard class="md:h-full">
-      <NuxtImg class="max-h-full" :src="`${$config.public.serverURL}${header_img}`" height="250" />
+      <NuxtImg class="max-h-full" :src="header_img ? `${$config.public.serverURL}${header_img}` : '//placehold.co/600x400'" height="250" />
       <div>
         <h5>{{ name }}</h5>
         <p>{{ description }}</p>

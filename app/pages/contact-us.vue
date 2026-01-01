@@ -1,6 +1,7 @@
 <script setup>
   import { Button } from '@/components/ui/button'
   const { $api } = useNuxtApp();
+  const { isLoggedIn } = useAuthStore();
   // useAsyncData is preferred over useFetch when using a custom fetcher
   const { data: branches, refresh: refreshBranches } = await useAsyncData('branches', () => $api('/branch'))
 
@@ -30,25 +31,25 @@
         v-for="branch in branches" :key="branch.id"
         :class="[
           'p-5 rounded-3xl border-2 transition-all cursor-pointer grid grid-cols-2 gap-3',
-          selectedBranch?.id === branch.id ? 'border-blue-600 bg-blue-50' : 'border-slate-100 bg-white'
+          selectedBranch?.id === branch.id ? 'border-blue-600 bg-blue-50 dark:bg-transparent' : 'border-slate-100 bg-white dark:bg-transparent'
         ]"
         @click="selectedBranch = branch"
       >
         <div>
-          <h3 class="font-bold text-lg">{{ branch.name }}</h3>
-          <p class="text-sm text-slate-500 mb-3">{{ branch.address }}</p>
+          <h3 class="font-bold text-lg dark:text-white">{{ branch.name }}</h3>
+          <p class="text-sm text-slate-500 mb-3 dark:text-slate-400">{{ branch.address }}</p>
           
           <div class="grid grid-cols-2 gap-2">
             <Button size="sm" class="bg-green-500 hover:bg-green-600 text-white" @click.stop="openWhatsApp(branch)">WhatsApp</Button>
             <Button size="sm" variant="outline" @click.stop="callBranch(branch.phone)">Call</Button>
-            <Button size="sm" class="col-span-2 bg-primary-500 hover:bg-primary-600 text-white" @click="bookThisBranch(branch)">
+            <Button v-if="isLoggedIn" size="sm" class="col-span-2 bg-primary-500 hover:bg-primary-600 text-white" @click="bookThisBranch(branch)">
               Book at this Branch
             </Button>
           </div>
         </div>
 
         <div>
-          <img :src="`${$config.public.serverURL}${branch.image}`" class="w-full h-[200px] object-cover rounded-3xl" alt="">
+          <img :src="branch.image ? `${$config.public.serverURL}${branch.image}` : '//placehold.co/180x180'" class="w-full h-[200px] object-cover rounded-3xl" alt="">
         </div>
       </div>
     </div>

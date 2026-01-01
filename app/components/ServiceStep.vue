@@ -20,7 +20,7 @@ const handleTreatmentSelect = (treatment) => {
   <div class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
     <div v-for="cat in categories" :key="cat.id">
       <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{{ cat.name }}</h3>
-      <div class="grid gap-2">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
         <button 
           v-for="treatment in cat.treatment" 
           :key="treatment.id"
@@ -31,7 +31,7 @@ const handleTreatmentSelect = (treatment) => {
             <p class="font-bold text-slate-800">{{ treatment.name }}</p>
             <p class="text-xs text-slate-500">{{ treatment.duration }} mins</p>
           </div>
-          <p class="font-bold text-blue-600">{{ formatIDR(treatment.price) }}</p>
+          <p class="font-bold text-primary-900">{{ formatIDR(treatment.price) }}</p>
         </button>
       </div>
     </div>

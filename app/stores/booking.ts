@@ -57,7 +57,7 @@ export const useBookingStore = defineStore('booking', {
       }
 
       try {
-        await $api('/cart', { method: 'POST', body: payload })
+        await $api('/cart/session', { method: 'POST', body: payload })
         this.currentStep = 'confirm'
       } catch (e) {
         // Handle error (e.g., therapist already booked for that duration)

@@ -28,8 +28,8 @@
 <template>
   <ClientOnly>
     <Drawer v-model:open="bookingStore.isOpen">
-    <DrawerContent class="bg-slate-50">
-      <div class="mx-auto w-full max-w-sm px-4">
+    <DrawerContent class="bg-slate-50 dark:bg-slate-950">
+      <div class="mx-auto w-full px-4">
         <div class="flex justify-between items-center py-4 border-b mb-4">
            <button
             v-if="bookingStore.currentStep !== 'branch'" 
@@ -47,12 +47,12 @@
             v-for="step in steps" :key="step"
             :disabled="!canNavigateTo(step)"
             :class="['h-2 flex-1 rounded-full transition-all', 
-              bookingStore.currentStep === step ? 'bg-blue-600' : 'bg-slate-100']"
+              bookingStore.currentStep === step ? 'bg-primary-900' : 'bg-slate-100']"
             @click="goToStep(step)"
           />
         </div>
 
-        <div class="p-4 pb-0">
+        <div class="p-4">
           <BranchStep v-if="bookingStore.currentStep === 'branch'" />
           <ServiceStep v-if="bookingStore.currentStep === 'treatment'" />
           <DateStep v-if="bookingStore.currentStep === 'date'" />

@@ -4,7 +4,7 @@
 
   // 2. (Optional but recommended) If you need to keep properties reactive 
   // when destructuring, use storeToRefs
-  const { user } = storeToRefs(auth)
+  const { isLoggedIn } = storeToRefs(auth)
   // 3. Initialize your booking store too since we used it in the UI
   const bookingStore = useBookingStore();
 
@@ -34,15 +34,15 @@
   <div>
     <HeroSection />
 
-    <div v-if="user" class="appointment-form p-4 bg-white rounded-xl shadow-lg -mt-10 relative z-20">
+    <div v-if="isLoggedIn" class="appointment-form p-4 bg-slate-50 dark:bg-slate-950 rounded-xl shadow-lg -mt-10 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="cursor-pointer border p-3 rounded-lg flex justify-between" @click="bookingStore.openWithStep('date')">
-          <span class="text-slate-500">{{ bookingStore.selection.session_date || 'Select date' }}</span>
+          <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.session_date || 'Select date' }}</span>
           <UIcon name="i-mdi-calendar" class="w-5 h-5" />
         </div>
 
         <div class="cursor-pointer border p-3 rounded-lg flex justify-between" @click="bookingStore.openWithStep('treatment')">
-          <span class="text-slate-500">{{ bookingStore.selection.treatment?.name || 'Select treatment' }}</span>
+          <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.treatment?.name || 'Select treatment' }}</span>
           <UIcon name="i-mdi-chevron-down" class="w-5 h-5" />
         </div>
       </div>
@@ -52,7 +52,7 @@
       </button>
     </div>
     
-    <PriceList :categories="categories" :user="user" />
+    <PriceList :categories="categories" />
     <HeroFooter :categories="categories" />
   </div>
 </template>

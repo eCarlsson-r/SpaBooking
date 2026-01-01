@@ -43,7 +43,7 @@ const selectTime = (time) => {
           :class="[
             'flex-shrink-0 w-14 h-16 rounded-xl border flex flex-col items-center justify-center transition-all',
             bookingStore.selection.session_date === format(day, 'yyyy-MM-dd') 
-              ? 'bg-blue-600 border-blue-600 text-white shadow-lg' 
+              ? 'bg-primary-900 border-primary-900 text-white shadow-lg' 
               : 'bg-white text-slate-600 border-slate-100'
           ]"
           @click="selectDate(day)"
@@ -62,7 +62,7 @@ const selectTime = (time) => {
           :class="[
             'py-3 rounded-xl border text-sm font-bold transition-all',
             bookingStore.selection.session_time === time 
-              ? 'bg-blue-600 border-blue-600 text-white' 
+              ? 'bg-primary-900 border-primary-900 text-white' 
               : 'bg-slate-50 border-transparent text-slate-600'
           ]"
           @click="selectTime(time)"

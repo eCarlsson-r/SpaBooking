@@ -4,23 +4,20 @@
     categories: {
       type: Object,
       required: true
-    },
-    user: {
-      type: Object,
-      default: null
     }
   })
   const selectedCategory = ref('B')
   const currentCategoryData = computed(() => {
     return props.categories.find((c: Category) => c.id === selectedCategory.value);
   })
+  const { isLoggedIn } = useAuthStore();
 </script>
 <template>
   <div class="flex min-h-[500px] overflow-hidden bg-white shadow-xl">
-    <div class="flex-1 flex flex-col md:flex-row">
+    <div class="flex-1 flex flex-col sm:flex-row">
       <div class="hidden md:block w-1/2 relative overflow-hidden">
         <img 
-          :src="`${$config.public.serverURL}${currentCategoryData.header_img}`"
+          :src="currentCategoryData.header_img ? `${$config.public.serverURL}${currentCategoryData.header_img}` : 'price-tabs.webp'"
           class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           alt="Category Image"
         >
@@ -40,8 +37,8 @@
         </button>
       </div>
 
-      <div class="flex-1 p-8 bg-[#F9F9F9]">
-        <h2 class="text-2xl text-yellow-900 mb-6 border-b pb-2">
+      <div class="flex-1 p-8 bg-stone-50 dark:bg-stone-950">
+        <h2 class="text-2xl text-yellow-900 dark:text-primary-500 mb-6 border-b pb-2">
           {{ currentCategoryData.name }}
         </h2>
         
@@ -52,10 +49,13 @@
             class="flex justify-between items-end border-b border-dotted border-gray-300 pb-2 group hover:bg-white p-2 rounded transition-colors"
           >
             <div>
-              <p class="font-bold text-gray-800">{{ service.name }}</p>
+              <p class="font-bold text-gray-800 dark:text-gray-50 hover:text-gray-800">{{ service.name }}</p>
             </div>
-            <div class="text-yellow-900 font-bold">
-              {{ (user) ? `Rp. ${new Intl.NumberFormat('id-ID').format(service.price)},-` : 'Ask Price' }}
+            <div v-if="isLoggedIn" class="text-yellow-900 font-bold dark:text-primary-500 hover:text-yellow-900">
+              Rp. {{ new Intl.NumberFormat('id-ID').format(service.price) }},-
+            </div>
+            <div v-else class="text-yellow-900 font-bold dark:text-primary-500">
+              Ask Price
             </div>
           </div>
         </div>

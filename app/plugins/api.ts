@@ -1,6 +1,7 @@
 // plugins/api.ts
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
+  const token = useCookie('auth_token');
 
   const apiFetcher = $fetch.create({
     baseURL: config.public.apiBase,
@@ -8,7 +9,9 @@ export default defineNuxtPlugin(() => {
       // Add default headers here (e.g., for JSON or Auth)
       if (!options.headers) options.headers = new Headers();
       options.headers.set('Accept', 'application/json');
-      
+      if (token.value) {
+        options.headers.set('Authorization', `Bearer ${token.value}`)
+      }
       console.log(`[API Request] ${request}`);
     },
     onResponseError({ response }) {

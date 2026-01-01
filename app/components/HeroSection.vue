@@ -20,7 +20,7 @@ if (error.value) {
       indicators
       arrows
     >
-      <div class="relative w-full aspect-[21/9] md:aspect-[3/1]">
+      <div class="relative w-full aspect-[2/1] md:aspect-[3/1]">
         <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
           

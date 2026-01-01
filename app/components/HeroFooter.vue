@@ -11,7 +11,7 @@
   <div class="relative py-12 px-6 md:px-12 bg-cover bg-center" style="background-image: url('/footer.webp');">
     <div class="absolute inset-0 bg-yellow-800/70"/>
 
-    <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto text-white">
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto text-white">
       <div>
         <h4 class="text-xs italic text-lime-300">Brief description about us</h4>
         <h3 class="text-xl font-bold mb-4 uppercase">About Us</h3>

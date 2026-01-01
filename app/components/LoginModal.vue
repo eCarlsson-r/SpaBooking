@@ -47,7 +47,7 @@
       </div>
 
       <DialogFooter class="flex flex-col gap-3">
-        <Button class="w-full bg-[#8A8A00] hover:bg-[#6A6A00] h-12" @click="handleLogin">
+        <Button class="w-full bg-primary-500 hover:bg-primary-600 text-white h-12" @click="handleLogin">
           Sign In
         </Button>
         <p class="text-sm text-center">

@@ -1,6 +1,10 @@
 <script setup lang="ts">
   const { navsSecondary } = useNavMenu();
-  const { user, logout } = useAuthStore();
+  const auth = useAuthStore()
+
+  const handleLogout = async () => {
+    await auth.logout()
+  }
 
   const dropdownItems = [
     [
@@ -31,7 +35,7 @@
     :items="dropdownItems"
   >
     <UAvatar
-      src="https://avatars.githubusercontent.com/u/73772701?v=4"
+      :src="auth.user?.avatar_url || 'https://avatars.githubusercontent.com/u/73772701?v=4'"
       alt="Avatar"
       size="lg"
       class="sm:ml-2"
@@ -39,7 +43,7 @@
     <template #account>
       <div class="my-1 space-x-1 w-full">
         <ProfileActions class="sm:!hidden" />
-        <UButton class="font-bold my-4 sm:my-2" @click="logout">Sign Out</UButton>
+        <UButton class="font-bold my-4 sm:my-2" @click="handleLogout">Sign Out</UButton>
       </div>
     </template>
   </UDropdown>

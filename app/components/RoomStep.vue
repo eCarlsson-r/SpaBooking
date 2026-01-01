@@ -36,7 +36,7 @@ const selectRoom = (room) => {
     <div v-else class="grid grid-cols-3 gap-2">
       <button 
         v-for="room in rooms" :key="room.id"
-        class="p-3 border rounded-xl text-center text-sm font-bold hover:border-blue-500 bg-white"
+        class="p-3 border rounded-xl text-center text-sm font-bold hover:border-primary-900 bg-white"
         @click="selectRoom(room)"
       >
         {{ room.name }}
