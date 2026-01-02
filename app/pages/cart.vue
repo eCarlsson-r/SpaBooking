@@ -38,7 +38,7 @@
     <div v-else class="space-y-4">
         <div
             v-for="(item, index) in cart.items" :key="index" 
-            class="bg-white border rounded-3xl mx-6 p-6 relative shadow-sm"
+            class="bg-white border rounded-3xl mx-6 mb-6 p-6 relative shadow-sm"
         >
         <CartRecords
             :item="item" 

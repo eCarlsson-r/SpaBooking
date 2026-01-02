@@ -16,4 +16,15 @@ const { data: categories, refresh: refreshCategories } = await useAsyncData('cat
 useRealtimeSync({
   'category': refreshCategories,
 })
+
+definePageMeta({
+    // layout: 'default',
+    // name: 'index',
+    // alias: 'index',
+    title: 'Treatment Categories',
+    description: 'Explore our relaxing treatments and book your next session.',
+    navOrder: 2,
+    type: 'primary',
+    icon: 'i-tabler-massage'
+  })
 </script>

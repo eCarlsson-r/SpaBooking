@@ -1,36 +1,45 @@
 <script setup>
-const props = defineProps(['item']);
-const emit = defineEmits(['update-qty', 'remove']);
+  import { toast } from 'vue-sonner'
+  const props = defineProps(['item']);
+  const emit = defineEmits(['update-qty', 'remove']);
 
-const formattedPrice = (val) => {
-  return formatIDR(Math.round(val / 1000)) + 'K';
-};
+  const formattedPrice = (val) => {
+    return formatIDR(Math.round(val / 1000)) + 'K';
+  };
 
-const handleAdd = () => {
-  if (props.item.session_type === 'voucher') {
-    // Original Logic: max 5 sets
-    if (props.item.quantity + props.item.voucher_normal_quantity <= props.item.voucher_normal_quantity * 5) {
-      emit('update-qty', props.item.voucher_normal_quantity);
-    } else {
-      alert("Maksimal pembelian adalah 5 set voucher.");
+  const handleAdd = () => {
+    if (props.item.session_type === 'voucher') {
+      // Original Logic: max 5 sets
+      if (props.item.quantity + props.item.voucher_normal_quantity <= props.item.voucher_normal_quantity * 5) {
+        emit('update-qty', props.item.voucher_normal_quantity);
+      } else {
+        toast({
+          title: "Error",
+          description: "Maximum purchase is 5 sets of voucher.",
+          variant: "destructive",
+        })
+      }
     }
-  }
-};
+  };
 
-const handleSubtract = () => {
-  if (props.item.session_type === 'voucher') {
-    // Original Logic: min 1 set
-    if (props.item.quantity - props.item.voucher_normal_quantity >= props.item.voucher_normal_quantity) {
-      emit('update-qty', -props.item.voucher_normal_quantity);
-    } else {
-      alert("Minimal pembelian adalah 1 set voucher.");
+  const handleSubtract = () => {
+    if (props.item.session_type === 'voucher') {
+      // Original Logic: min 1 set
+      if (props.item.quantity - props.item.voucher_normal_quantity >= props.item.voucher_normal_quantity) {
+        emit('update-qty', -props.item.voucher_normal_quantity);
+      } else {
+        toast({
+          title: "Error",
+          description: "Need to purchase at least 1 set of voucher.",
+          variant: "destructive",
+        })
+      }
     }
-  }
-};
+  };
 </script>
 
 <template>
-  <div class="flex flex-col sm:flex-row items-center py-6 gap-6">
+  <div class="flex flex-col sm:flex-row items-center gap-6">
     <div class="flex flex-1 gap-4 items-start">
       <NuxtImg 
         :src="item.treatment.icon_img ? `${$config.public.serverURL}${item.treatment.icon_img}` : '//placehold.co/180x180'" 
@@ -59,13 +68,13 @@ const handleSubtract = () => {
       <div class="flex items-center border rounded-xl bg-slate-50">
         <button 
           :disabled="item.session_type !== 'voucher'"
-          class="px-3 py-2 disabled:opacity-20 text-[#8B6E1C] font-bold"
+          class="px-3 py-2 disabled:opacity-20 text-primary-900 font-bold"
           @click="handleSubtract"
         >—</button>
-        <span class="w-8 text-center font-bold">{{ item.quantity }}</span>
+        <span class="w-8 text-center font-bold text-slate-800">{{ item.quantity }}</span>
         <button 
           :disabled="item.session_type !== 'voucher'"
-          class="px-3 py-2 disabled:opacity-20 text-[#8B6E1C] font-bold"
+          class="px-3 py-2 disabled:opacity-20 text-primary-900 font-bold"
           @click="handleAdd"
         >+</button>
       </div>
@@ -73,7 +82,7 @@ const handleSubtract = () => {
 
     <div class="w-32 text-right">
       <p class="text-xs text-slate-400">Subtotal</p>
-      <p class="font-black text-[#8B6E1C] text-lg">
+      <p class="font-black text-primary-900 text-lg">
         {{ formattedPrice(item.session_type === 'voucher' ? (item.price * (item.quantity/item.voucher_normal_quantity) * item.voucher_purchase_quantity) : item.price * item.quantity) }}
       </p>
     </div>

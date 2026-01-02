@@ -3,7 +3,10 @@
   const auth = useAuthStore()
 
   const handleLogout = async () => {
-    await auth.logout()
+    // Clear Auth State
+    await auth.logout() 
+    // Redirect to landing
+    navigateTo('/login')
   }
 
   const dropdownItems = [

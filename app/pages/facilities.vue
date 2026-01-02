@@ -22,4 +22,15 @@
   useRealtimeSync({
     'room': refreshRooms,
   })
+
+  definePageMeta({
+    // layout: 'default',
+    // name: 'index',
+    // alias: 'index',
+    title: 'Facilities',
+    description: 'Explore our relaxing facilities.',
+    navOrder: 4,
+    type: 'primary',
+    icon: 'i-mdi-home'
+  })
 </script>

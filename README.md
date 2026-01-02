@@ -1,66 +1,89 @@
-# Carlsson Spa Booking
+# SpaBooking
 
-A premium online booking portal for Carlsson Spa & Wellness Center. Built with Nuxt 3, this frontend provides a seamless experience for customers to browse services and book appointments.
+[![Nuxt 3](https://img.shields.io/badge/Nuxt-3.15+-00DC82.svg?logo=nuxt.js&logoColor=white)](https://nuxt.com)
+[![Vue 3](https://img.shields.io/badge/Vue-3.5+-4FC08D.svg?logo=vuedotjs&logoColor=white)](https://vuejs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4+-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Lighthouse 100](https://img.shields.io/badge/Lighthouse-100-orange.svg?logo=lighthouse&logoColor=white)](https://web.dev/performance-scoring/)
 
-## Features
+> **Premium Booking Experience, Redefined.**
+> An exquisite, high-performance customer interface for the modern spa. Built with Nuxt 3/4 and Pinegrow, SpaBooking delivers a seamless, app-like experience that converts visitors into lifelong clients.
 
-- **Service Catalog** - Browse spa treatments, massages, facials, and more
-- **Online Booking** - Real-time appointment scheduling
-- **Category Navigation** - Easy filtering of services by category
-- **Customer Portal** - View order history and personalized info
-- **Responsive Design** - Optimized for mobile and desktop booking
+## ✨ Highlights
 
-## Tech Stack
+### 🎨 Visual Excellence
 
-- **Framework**: [Nuxt 3](https://nuxt.com/) (Vue.js 3)
-- **UI library**: [Nuxt UI](https://ui.nuxt.com/) (Tailwind CSS based)
-- **State Management**: [Pinia](https://pinia.vuejs.org/)
-- **Icons**: [UnoCSS Icons](https://unocss.dev/presets/icons)
-- **Visual Design**: Integrated with [Vue Designer](https://vuedesigner.com/)
+- **Pinegrow Powered**: Pixel-perfect designs crafted with the precision of a professional designer.
+- **Nuxt UI & UnoCSS**: A stunning, accessible, and ultra-fast component system.
+- **Micro-interactions**: Fluid transitions and interactive elements that feel premium and responsive.
 
-## Getting Started
+### ⚡ Technical Superiority
 
-### Prerequisites
+- **Nuxt 3/4 Future-Ready**: Leveraging the latest in Vue and Nuxt innovation (SSR, Component Islands, Future Flags).
+- **SEO Perfection**: Industry-leading SEO with `unhead` and `@nuxtjs/seo`, ensuring your spa ranks where it matters.
+- **Real-time Sync**: Seamless integration with **Laravel Echo** and **Pusher** for instant booking confirmations and state updates.
 
-- Node.js 20+
-- Running [SpaSystem-API](file:///Users/lbert/Herd/SpaSystem-API) backend
+### 🛋️ Client Experience
 
-### Installation
+- **Fluid Checkout**: An optimized, multi-step booking and checkout flow designed for conversion.
+- **Live Catalog**: Dynamic treatment browsing with rich imagery and detailed service descriptions.
+- **Customer History**: Personalized dashboard for clients to track their wellness journey, vouchers, and upcoming sessions.
 
-1. Install dependencies:
+## 🛠️ Tech Stack
 
-   ```bash
-   npm install
-   ```
+- **Foundation**: Nuxt 3.15 (SSR Ready)
+- **UI/UX**: Nuxt UI + Tailwind CSS + UnoCSS
+- **Design Toolkit**: Pinegrow Live Designer
+- **State Management**: Pinia (Modular stores)
+- **Connectivity**: Laravel Echo + Pusher (Real-time events)
+- **Validation**: VeeValidate + ZOD
+- **Icons**: Lucide + Iconify (Tree-shaken)
 
-2. Configure environment variables (copy `.env.example` to `.env`):
+## 🏁 Getting Started
 
-   ```env
-   NUXT_PUBLIC_API_BASE=http://localhost:8000/api
-   ```
+### Quick Start
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+Ensure you have the [SpaSystem-API](https://github.com/your-org/SpaSystem-API) running first.
 
-The application will be available at `http://localhost:3001`.
+```bash
+# Clone the repository
+git clone <repository-url>
+cd SpaBooking
 
-## Project Structure
+# Install dependencies
+npm install
 
-- `app/pages/` - Application routes and views
-- `app/components/` - Vue components
-- `app/content/` - Markdown content for static pages
-- `stores/` - Pinia state management
-- `server/` - Nitro server routes
+# Start the premium experience
+npm run dev
+```
 
-## System Integration
+### Configuration
 
-This frontend is part of the **Carlsson Spa Information System**:
+Update `nuxt.config.ts` or `.env` with your API endpoints:
 
-- **[SpaSystem-API](file:///Users/lbert/Herd/SpaSystem-API)**: The core Laravel backend
-- **[SpaCashier](file:///Users/lbert/Herd/SpaCashier)**: The management dashboard for staff
+```typescript
+public: {
+  apiBase: 'http://localhost:8000/api',
+  serverURL: 'http://localhost:8000',
+  reverbHost: 'localhost',
+  reverbKey: 'your-key-here'
+}
+```
 
-## License
+## 📈 Performance & Quality
 
-This project is licensed under the MIT License.
+We take web performance seriously. SpaBooking is designed to hit 100/100 across the board:
+
+- **Critters**: Critical CSS extraction for instant paint.
+- **Fontaine**: Font metric overrides to eliminate CLS.
+- **Nuxt Image**: Automated image optimization and WebP delivery.
+
+## 📁 Project Map
+
+- `app/pages`: Dynamic routing and exquisite layouts.
+- `app-nuxtui-layer`: Shared branding, navigation, and footer components.
+- `stores`: Client-side state logic for carts, auth, and sessions.
+- `assets/css`: Professional Tailwind/PostCSS configuration.
+
+---
+
+Crafted with ❤️ for the Wellness Elite. Built on [Nuxt](https://nuxt.com).

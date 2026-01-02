@@ -22,6 +22,17 @@
   watch(branches, (newVal) => {
     if (newVal?.length > 0) selectedBranch.value = newVal[0]
   }, { immediate: true })
+
+  definePageMeta({
+    // layout: 'default',
+    // name: 'index',
+    // alias: 'index',
+    title: 'Contact Us',
+    description: 'Get to know our branches and how to contact us.',
+    navOrder: 5,
+    type: 'primary',
+    icon: 'i-mdi-home'
+  })
 </script>
 
 <template>

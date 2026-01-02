@@ -13,11 +13,10 @@
     // name: 'index',
     // alias: 'index',
     title: 'Home',
-    description: 'New Arrivals, Big Savings!',
+    description: 'Explore our relaxing treatments and book your next session.',
     navOrder: 1,
     type: 'primary',
-    icon: 'i-mdi-home',
-    // ogImage: 'images/ogImage.png', // url or local images inside public folder, for eg, ~/public/images/ogImage.png
+    icon: 'i-mdi-home'
   })
 
   const { $api } = useNuxtApp();
@@ -43,12 +42,12 @@
 
         <div class="cursor-pointer border p-3 rounded-lg flex justify-between" @click="bookingStore.openWithStep('treatment')">
           <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.treatment?.name || 'Select treatment' }}</span>
-          <UIcon name="i-mdi-chevron-down" class="w-5 h-5" />
+          <UIcon name="i-material-symbols-chevron-down-rounded" class="w-5 h-5" />
         </div>
       </div>
 
       <button class="lemon-btn w-full mt-4" @click="bookingStore.openWithStep('confirm')">
-        Book Now <i class="fa fa-angle-double-right"/>
+        Book Now <UIcon name="i-material-symbols-chevron-right-rounded" class="w-5 h-5" />
       </button>
     </div>
     

@@ -31,7 +31,7 @@
         <NavPrimary class="sm:w-full" />
       </div>
       <div v-if="isLoggedIn" data-pg-name="Profile" class="flex space-x-1">
-        <ProfileActions />
+        <ProfileActions class="hidden sm:flex" />
         <NavSecondary />
       </div>
       <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">Sign In / Join Us</UButton>

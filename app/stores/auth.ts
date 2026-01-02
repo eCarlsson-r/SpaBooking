@@ -1,5 +1,9 @@
 export const useAuthStore = defineStore('auth', () => {
-   const user = ref(null)
+   const user = ref(null);
+   const { $api } = useNuxtApp();
+   const ui = useUIStore()
+   const bookingStore = useBookingStore()
+
    const token = useCookie('auth_token', {
       maxAge: 60 * 60 * 24 * 7, // 1 week
       sameSite: 'lax',
@@ -10,7 +14,6 @@ export const useAuthStore = defineStore('auth', () => {
    const initAuth = async () => {
       if (token.value && !user.value) {
          try {
-            const { $api } = useNuxtApp()
             const res = await $api('/user') 
             // Ensure your Laravel /me returns the same structure: { data: { ... } }
             user.value = res 
@@ -21,11 +24,6 @@ export const useAuthStore = defineStore('auth', () => {
          }
       }
    }
-
-   const { $api } = useNuxtApp();
-   const ui = useUIStore();
-
-   const bookingStore = useBookingStore()
 
    const login = async (credentials) => {
       try {
@@ -42,7 +40,7 @@ export const useAuthStore = defineStore('auth', () => {
             bookingStore.setCustomer(response.data.customer.id);
          }
          // CLOSE THE MODAL automatically after successful login
-         ui.closeLogin()
+         ui.closeLogin();
 
          return response
       } catch (error) {
@@ -101,12 +99,31 @@ export const useAuthStore = defineStore('auth', () => {
          const authCookie = useCookie('auth_token');
          authCookie.value = res.token;
 
-         navigateTo('/');
+         navigateTo('/profile');
+         return res;
       } catch (err) {
          console.error("Registration failed:", err.response?._data || err);
          throw err;
       }
    };
 
-   return { user, isLoggedIn, token, login, logout, initAuth, fetchUser, register }
+   const updateProfile = async (formData) => {
+      try {
+        // Assuming you have a $api helper or useFetch set up
+        const { data } = await $api(`/customer/${formData.id}`, {
+          method: 'PUT',
+          body: formData
+        })
+        
+        // Update the local state with the new data from Laravel
+        user.value.customer = data;
+        
+        return { success: true }
+      } catch (error) {
+        console.error('Update failed:', error)
+        return { success: false, error }
+      }
+    }
+
+   return { user, isLoggedIn, token, login, logout, initAuth, fetchUser, register, updateProfile }
 })

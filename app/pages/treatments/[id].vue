@@ -7,6 +7,17 @@ const { data: category } = await useAsyncData(`category-${route.params.id}`, () 
   $api(`/category/${route.params.id}`)
 );
 
+definePageMeta({
+  // layout: 'default',
+  // name: 'index',
+  // alias: 'index',
+  title: category.value.name,
+  description: category.value.description,
+  navOrder: 3,
+  type: 'secondary',
+  icon: 'i-tabler-massage'
+})
+
 const props = defineProps(['treatment']);
 const bookingStore = useBookingStore();
 const ui = useUIStore();

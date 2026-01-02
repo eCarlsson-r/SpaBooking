@@ -23,9 +23,9 @@ export default {
   navs: {
     primary: [
       { title: 'Treatments', to: '/treatments', icon: 'i-mdi-home' },
-      { title: 'Vouchers', to: '/vouchers', icon: 'i-mdi-home' },
+      { title: 'Vouchers', to: '/catalog', icon: 'i-mdi-home' },
       { title: 'Facilities', to: '/facilities', icon: 'i-mdi-home' },
-      { title: 'Contact Us', to: '/contact-us', icon: 'i-material-symbols-add-call' }
+      { title: 'Contact', to: '/contact-us', icon: 'i-material-symbols-add-call' }
     ],
     secondary: [
       {
@@ -35,7 +35,17 @@ export default {
       },
       {
         title: 'My Bookings',
-        to: '/my-bookings',
+        to: '/bookings',
+        icon: 'i-mdi-calendar',
+      },
+      {
+        title: 'My Vouchers',
+        to: '/vouchers',
+        icon: 'i-ci-ticket-voucher',
+      },
+      {
+        title: 'Purchase History',
+        to: '/history',
         icon: 'i-ic-baseline-history',
       }
     ],
