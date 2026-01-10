@@ -64,30 +64,17 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [
-    '@pinegrow/nuxt-module',
-    '@unocss/nuxt',
-    '@nuxt/content',
-    '@vueuse/nuxt',
-    '@pinia/nuxt',
-    // '@nuxtjs/html-validator',
-    '@nuxt/image',
-    '@vee-validate/nuxt',
-    '@nuxtjs/seo',
-    // '@nuxtjs/fontaine', // blocked by https://github.com/nuxt-modules/fontaine/issues/342
-    '@nuxtjs/critters',
-    // '@nuxt/icon', // Pre-included by @nuxt/ui
-    'nuxt-icon', // To be replaced with @nuxt-icon (above), once NuxtSEO drops using this/becomes stable..
-    '@nuxt/eslint',
-    '@nuxt/ui',
-    function () {
-      addComponent({
-        name: 'UIcon',
-        filePath: '@/components/BaseIcon.vue',
-        priority: 100,
-      })
-    },
-  ],
+  modules: ['@pinegrow/nuxt-module', '@unocss/nuxt', '@nuxt/content', '@vueuse/nuxt', '@pinia/nuxt', // '@nuxtjs/html-validator',
+  '@nuxt/image', '@vee-validate/nuxt', '@nuxtjs/seo', // '@nuxtjs/fontaine', // blocked by https://github.com/nuxt-modules/fontaine/issues/342
+  '@nuxtjs/critters', // '@nuxt/icon', // Pre-included by @nuxt/ui
+  // To be replaced with @nuxt-icon (above), once NuxtSEO drops using this/becomes stable..
+  'nuxt-icon', '@nuxt/eslint', '@nuxt/ui', function () {
+    addComponent({
+      name: 'UIcon',
+      filePath: '@/components/BaseIcon.vue',
+      priority: 100,
+    })
+  }, 'shadcn-nuxt'],
 
   colorMode: {
     preference: 'light',
@@ -139,6 +126,21 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+
+  shadcn: {
+    /**
+     * Prefix for all the imported component.
+     * @default "Ui"
+     */
+    prefix: '',
+    /**
+     * Directory that the component lives in.
+     * Will respect the Nuxt aliases.
+     * @link https://nuxt.com/docs/api/nuxt-config#alias
+     * @default "@/components/ui"
+     */
+    componentDir: '@/components/ui'
   },
 
   image: {

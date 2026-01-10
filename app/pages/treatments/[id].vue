@@ -2,20 +2,25 @@
 const route = useRoute();
 const { $api } = useNuxtApp();
 
+definePageMeta({
+  // layout: 'default',
+  // name: 'index',
+  // alias: 'index',
+  navOrder: 3,
+  type: 'secondary',
+  icon: 'i-tabler-massage'
+})
+
 // route.params.id matches the [id].vue filename
 const { data: category } = await useAsyncData(`category-${route.params.id}`, () => 
   $api(`/category/${route.params.id}`)
 );
 
-definePageMeta({
-  // layout: 'default',
-  // name: 'index',
-  // alias: 'index',
+useSeoMeta({
   title: category.value.name,
   description: category.value.description,
-  navOrder: 3,
-  type: 'secondary',
-  icon: 'i-tabler-massage'
+  ogTitle: category.value.name,
+  ogDescription: category.value.description
 })
 
 const props = defineProps(['treatment']);

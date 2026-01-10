@@ -69,6 +69,7 @@
     "postcss": "^8.5.0",
     "prettier": "^3.4.2",
     "rehype-external-links": "^3.0.0",
+    "shadcn-nuxt": "^2.4.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   },

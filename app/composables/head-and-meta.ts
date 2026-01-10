@@ -39,9 +39,8 @@ export const useHeadAndMeta = (pageMeta: any) => {
     // ),
     {
       rel: 'icon',
-      // type: 'image/x-icon',
-      type: 'image/svg+xml',
-      href: '/favicon.svg',
+      type: 'image/x-icon',
+      href: '/icon.webp',
     },
   ]
   const noscript: any = []
