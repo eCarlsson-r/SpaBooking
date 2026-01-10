@@ -25,10 +25,10 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: 'http://localhost:8000/api',
-      serverURL: 'http://localhost:8000',
-      reverbHost: 'localhost',
-      reverbKey: 'sjjg8edoysdzyt5lz9b0' 
+      apiBase: process.env.APP_URL+'/api',
+      serverURL: process.env.APP_URL || 'http://localhost:8000',
+      reverbHost: process.env.REVERB_HOST || 'localhost',
+      reverbKey: process.env.REVERB_KEY 
     }
   },
 
@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'netlify-static',
+    preset: 'vercel',
   },
 
   app: {
@@ -173,9 +173,6 @@ export default defineNuxtConfig({
         },
       },
     },
-    // netlify: {
-    //   baseURL: url,
-    // },
     domains: [
       'images.unsplash.com',
       'fakestoreapi.com',
