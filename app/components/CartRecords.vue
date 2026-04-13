@@ -1,5 +1,5 @@
 <script setup>
-  import { toast } from 'vue-sonner'
+  const toast = useToast()
   const props = defineProps(['item']);
   const emit = defineEmits(['update-qty', 'remove']);
 
@@ -13,10 +13,10 @@
       if (props.item.quantity + props.item.voucher_normal_quantity <= props.item.voucher_normal_quantity * 5) {
         emit('update-qty', props.item.voucher_normal_quantity);
       } else {
-        toast({
+        toast.add({
           title: "Error",
           description: "Maximum purchase is 5 sets of voucher.",
-          variant: "destructive",
+          color: 'red',
         })
       }
     }
@@ -28,10 +28,10 @@
       if (props.item.quantity - props.item.voucher_normal_quantity >= props.item.voucher_normal_quantity) {
         emit('update-qty', -props.item.voucher_normal_quantity);
       } else {
-        toast({
+        toast.add({
           title: "Error",
           description: "Need to purchase at least 1 set of voucher.",
-          variant: "destructive",
+          color: 'red',
         })
       }
     }
@@ -42,7 +42,7 @@
   <div class="flex flex-col sm:flex-row items-center gap-6">
     <div class="flex flex-1 gap-4 items-start">
       <NuxtImg 
-        :src="item.treatment.icon_img ? `${$config.public.serverURL}${item.treatment.icon_img}` : '//placehold.co/180x180'" 
+        :src="item.treatment.icon_img ? `${$config.public.serverURL}/${item.treatment.icon_img}` : '//placehold.co/180x180'" 
         class="w-32 h-32 rounded-2xl object-cover shadow-sm"
       />
       <div>

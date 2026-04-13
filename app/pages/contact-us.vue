@@ -1,5 +1,4 @@
 <script setup>
-  import { Button } from '@/components/ui/button'
   const { $api } = useNuxtApp();
   const { isLoggedIn } = useAuthStore();
   // useAsyncData is preferred over useFetch when using a custom fetcher
@@ -51,16 +50,16 @@
           <p class="text-sm text-slate-500 mb-3 dark:text-slate-400">{{ branch.address }}</p>
           
           <div class="grid grid-cols-2 gap-2">
-            <Button size="sm" class="bg-green-500 hover:bg-green-600 text-white" @click.stop="openWhatsApp(branch)">WhatsApp</Button>
-            <Button size="sm" variant="outline" @click.stop="callBranch(branch.phone)">Call</Button>
-            <Button v-if="isLoggedIn" size="sm" class="col-span-2 bg-primary-500 hover:bg-primary-600 text-white" @click="bookThisBranch(branch)">
+            <UButton size="sm" class="bg-green-500 hover:bg-green-600 text-white" @click.stop="openWhatsApp(branch)">WhatsApp</UButton>
+            <UButton size="sm" variant="outline" @click.stop="callBranch(branch.phone)">Call</UButton>
+            <UButton v-if="isLoggedIn" size="sm" class="col-span-2 bg-primary-500 hover:bg-primary-600 text-white" @click="bookThisBranch(branch)">
               Book at this Branch
-            </Button>
+            </UButton>
           </div>
         </div>
 
         <div>
-          <img :src="branch.image ? `${$config.public.serverURL}${branch.image}` : '//placehold.co/180x180'" class="w-full h-[200px] object-cover rounded-3xl" alt="">
+          <img :src="branch.image ? `${$config.public.serverURL}/${branch.image}` : '//placehold.co/180x180'" class="w-full h-[200px] object-cover rounded-3xl" alt="">
         </div>
       </div>
     </div>

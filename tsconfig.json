@@ -3,6 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "strict": false
+    "strict": false,
+    "esModuleInterop": true
   }
 }

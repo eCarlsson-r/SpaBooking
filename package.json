@@ -24,20 +24,12 @@
     "@pinia/nuxt": "^0.5.4",
     "@vee-validate/nuxt": "^4.13.2",
     "@vueuse/core": "^11.3.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "laravel-echo": "^2.2.7",
     "lite-youtube-embed": "^0.3.3",
-    "lucide-vue-next": "^0.562.0",
     "pinia": "^2.2.2",
     "pusher-js": "^8.4.0",
-    "radix-vue": "^1.9.17",
-    "reka-ui": "^2.7.0",
-    "tailwind-merge": "^3.4.0",
-    "tailwindcss-animate": "^1.0.7",
-    "vaul-vue": "^0.4.1",
-    "vue-sonner": "^2.0.9"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.295",
@@ -58,7 +50,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.10.6",
     "@unocss/nuxt": "^65.4.0",
-    "@unocss/preset-icons": "^0.62.3",
+    "@unocss/preset-icons": "^65.5.0",
     "@vueuse/nuxt": "^12.4.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
@@ -69,17 +61,10 @@
     "postcss": "^8.5.0",
     "prettier": "^3.4.2",
     "rehype-external-links": "^3.0.0",
-    "shadcn-nuxt": "^2.4.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   },
-  "pnpm": {
-    "overrides": {
-      "nuxi": "3.8.4"
-    }
-  },
   "overrides": {
-    "nuxi": "3.8.4"
-  },
-  "web-types": "web-types.json"
+    "glob": "^11.0.0"
+  }
 }

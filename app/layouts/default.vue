@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { Toaster } from 'vue-sonner'
   import { storeToRefs } from 'pinia'
 
   const route = useRoute()
@@ -28,7 +27,7 @@
       <NavBar class="z-50" />
       <main>
         <slot />
-        <Toaster position="top-center" rich-colors close-button />
+        <UNotifications />
         <BookingDrawer />
       </main>
       <LoginModal />

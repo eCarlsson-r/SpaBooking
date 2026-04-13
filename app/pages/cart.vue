@@ -1,5 +1,4 @@
 <script setup>
-    import { Button } from '@/components/ui/button';
     const cart = useCartStore();
     const auth = useAuthStore();
 
@@ -32,7 +31,7 @@
 
     <div v-if="cart.items.length === 0" class="px-6 text-center">
       <p class="text-slate-400">Your cart is empty.</p>
-      <Button variant="link" @click="navigateTo('/')">Find Treatment</Button>
+      <UButton variant="link" @click="navigateTo('/')">Find Treatment</UButton>
     </div>
 
     <div v-else class="space-y-4">
@@ -53,9 +52,9 @@
                 <span class="text-slate-500 font-medium">Total Payment</span>
                 <span class="text-xl font-black text-[#8B6E1C]">{{ formatIDR(cart.totalPrice) }}</span>
             </div>
-            <Button class="w-full h-14 bg-[#B6CE00] hover:bg-[#a3b800] rounded-2xl text-white font-bold text-lg" @click="handleCheckout">
+            <UButton class="w-full h-14 bg-[#B6CE00] hover:bg-[#a3b800] rounded-2xl text-white font-bold text-lg" @click="handleCheckout">
                 PAY NOW
-            </Button>
+            </UButton>
             </div>
         </div>
     </div>

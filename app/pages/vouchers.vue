@@ -13,7 +13,7 @@
         class="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm">
         
         <div class="p-5 flex gap-4">
-          <NuxtImg :src="voucher.treatment.icon_img ? `${$config.public.serverURL}${voucher.treatment.icon_img}` : 'placehold.co/'" class="w-16 h-16 rounded-2xl object-cover" />
+          <NuxtImg :src="voucher.treatment.icon_img ? `${$config.public.serverURL}/${voucher.treatment.icon_img}` : 'placehold.co/'" class="w-16 h-16 rounded-2xl object-cover" />
           <div class="flex-1">
             <h4 class="font-bold text-slate-800 leading-tight">{{ voucher.treatment.name }}</h4>
             <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">

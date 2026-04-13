@@ -1,6 +1,4 @@
 <script setup>
-  import { Drawer, DrawerContent, DrawerClose } from '@/components/ui/drawer'
-  // Use storeToRefs for cleaner template access and to avoid 'undefined' during init
   import { storeToRefs } from 'pinia'
   const bookingStore = useBookingStore()
   const { isOpen, currentStep } = storeToRefs(bookingStore)
@@ -10,7 +8,6 @@
   const canNavigateTo = (step) => {
     const currentIndex = steps.indexOf(bookingStore.currentStep)
     const targetIndex = steps.indexOf(step)
-    // Allow going back to any step, or forward only to the next logical step
     return targetIndex < currentIndex 
   }
 
@@ -27,9 +24,8 @@
 
 <template>
   <ClientOnly>
-    <Drawer v-model:open="bookingStore.isOpen">
-    <DrawerContent class="bg-slate-50 dark:bg-slate-950">
-      <div class="mx-auto w-full px-4">
+    <USlideover v-model="bookingStore.isOpen" side="bottom" :ui="{ width: 'w-full max-w-full' }">
+      <div class="bg-slate-50 dark:bg-slate-950 h-full mx-auto w-full px-4">
         <div class="flex justify-between items-center py-4 border-b mb-4">
            <button
             v-if="bookingStore.currentStep !== 'branch'" 
@@ -37,9 +33,9 @@
             <UIcon name="i-material-symbols-chevron-left-rounded" class="w-5 h-5 text-slate-500" />
            </button>
            <span class="font-bold capitalize">{{ bookingStore.currentStep }}</span>
-           <DrawerClose>
+           <button @click="bookingStore.isOpen = false">
             <UIcon name="i-material-symbols-close" class="w-5 h-5 text-slate-300" />
-           </DrawerClose>
+           </button>
         </div>
 
         <div class="flex gap-2 mb-6">
@@ -61,7 +57,6 @@
           <ConfirmStep v-if="bookingStore.currentStep === 'confirm'" />
         </div>
       </div>
-    </DrawerContent>
-  </Drawer>
+    </USlideover>
   </ClientOnly>
 </template>

@@ -9,7 +9,8 @@ import { safelist } from './app/utils/colors'
 
 import tailwindTypography from '@tailwindcss/typography'
 import tailwindForms from '@tailwindcss/forms'
-import tailwindCssPluginPinegrow from '@pinegrow/tailwindcss-plugin'
+import _tailwindCssPluginPinegrow from '@pinegrow/tailwindcss-plugin'
+const tailwindCssPluginPinegrow = (_tailwindCssPluginPinegrow as any)['module.exports'] ?? (_tailwindCssPluginPinegrow as any).default ?? _tailwindCssPluginPinegrow
 
 export default {
   darkMode: 'class',

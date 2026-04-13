@@ -1,23 +1,24 @@
 <script setup lang="ts">
   import type { Category } from '~~/types/store'
+  import type { PropType } from 'vue'
   const props = defineProps({
     categories: {
-      type: Object,
-      required: true
+      type: Array as PropType<Category[]>,
+      default: () => []
     }
   })
   const selectedCategory = ref('B')
   const currentCategoryData = computed(() => {
-    return props.categories.find((c: Category) => c.id === selectedCategory.value);
+    return props.categories?.find((c: Category) => c.id === selectedCategory.value) ?? null;
   })
   const { isLoggedIn } = useAuthStore();
 </script>
 <template>
-  <div class="flex min-h-[500px] overflow-hidden bg-white shadow-xl">
+  <div v-if="currentCategoryData" class="flex min-h-[500px] overflow-hidden bg-white shadow-xl">
     <div class="flex-1 flex flex-col sm:flex-row">
       <div class="hidden md:block w-1/2 relative overflow-hidden">
         <img 
-          :src="currentCategoryData.header_img ? `${$config.public.serverURL}${currentCategoryData.header_img}` : 'price-tabs.webp'"
+          :src="currentCategoryData.header_img ? `${$config.public.serverURL}/${currentCategoryData.header_img}` : 'price-tabs.webp'"
           class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           alt="Category Image"
         >

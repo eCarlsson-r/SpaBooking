@@ -2,7 +2,7 @@
 const { $api } = useNuxtApp();
 
 // useAsyncData is preferred over useFetch when using a custom fetcher
-const { data: banners, error } = await useAsyncData('banner', () => 
+const { data: banners, error } = await useAsyncData<any[]>('banner', () => 
   $api('/banner')
 );
 
@@ -14,14 +14,14 @@ if (error.value) {
   <div class="relative w-full overflow-hidden shadow-lg group">
     <UCarousel
       v-slot="{ item }"
-      :items="banners"
+      :items="banners ?? []"
       :ui="{ item: 'basis-full' }"
       class="rounded-lg overflow-hidden"
       indicators
       arrows
     >
       <div class="relative w-full aspect-[2/1] md:aspect-[3/1]">
-        <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
+        <img :src="`${$config.public.serverURL}/${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
           
           <div class="px-8 md:px-16 w-full text-center text-white space-y-4">

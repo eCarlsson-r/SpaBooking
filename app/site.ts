@@ -8,7 +8,7 @@ export default {
     'Luxury Spa & Wellness Center - Online Booking Portal',
   logo: 'i-fluent-emoji:sparkles',
   author: 'Carlsson Spa Team',
-  url: 'http://localhost:3001',
+  url: process.env.NUXT_PUBLIC_SITE_URL || 'https://carlsson-spa.com',
   github: 'https://github.com/eCarlsson-r/SpaBooking',
   ogImageUrl: 'og-image.jpg', // absolute url (or) from public folder
   generator: 'https://vuedesigner.com',

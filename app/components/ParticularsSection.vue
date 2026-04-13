@@ -1,5 +1,5 @@
 <script setup>
-  import { toast } from 'vue-sonner'
+  const toast = useToast()
   const auth = useAuthStore()
   const isEditing = ref(false)
   const editForm = ref({ ...auth.user.customer })
@@ -9,25 +9,27 @@
     
     if (result.success) {
       isEditing.value = false
-      toast({
+      toast.add({
         title: "Success!",
         description: "Profile updated successfully!",
-        variant: "success", // or "default" / "destructive"
+        color: 'green',
       })  
     } else {
-      toast({
+      toast.add({
         title: "Error",
         description: "Failed to update profile. Please try again.",
-        variant: "destructive",
+        color: 'red',
       })
     }
   }
+
+  const { public: { siteUrl } } = useRuntimeConfig()
 
   const shareReferral = async () => {
     const shareData = {
       title: 'Carlsson Spa Referral',
       text: `Get a special discount at Carlsson Spa using my referral code: ${auth.user.customer.referral_code}`,
-      url: 'http://localhost:3001/register'//'https://carlsson-spa.com/register' // Link to your PWA registration
+      url: `${siteUrl}/register`
     }
 
     try {
@@ -36,10 +38,10 @@
       } else {
         // Fallback: Copy to clipboard if Share API is not supported (Desktop)
         navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`)
-        toast({
+        toast.add({
           title: "Success!",
           description: "Referral link copied to clipboard!",
-          variant: "success", // or "default" / "destructive"
+          color: 'green',
         })
       }
     } catch (err) {

@@ -39,7 +39,7 @@ const handleQuickBook = () => {
 <template>
   <div v-if="category">
     <div class="relative w-full aspect-[21/12] md:aspect-[5/1]">
-      <img :src="`${$config.public.serverURL}${category.header_img}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
+      <img :src="`${$config.public.serverURL}/${category.header_img}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
       <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
         <div class="px-8 md:px-16 w-full text-center text-white space-y-4">
           <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
@@ -56,7 +56,7 @@ const handleQuickBook = () => {
       <UCard v-for="item in category.treatment" :key="item.id">
         <div class="grid grid-cols-4">
           <div>
-            <NuxtImg :src="`${$config.public.serverURL}${item.image}`" height="250" />
+            <NuxtImg :src="`${$config.public.serverURL}/${item.image}`" height="250" />
           </div>
           
           <div class="col-span-3">
@@ -72,13 +72,13 @@ const handleQuickBook = () => {
 
     <div class="grid grid-cols-3">
       <div class="relative w-full aspect-[2/1]">
-        <img :src="`${$config.public.serverURL}${category.body_img1}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
+        <img :src="`${$config.public.serverURL}/${category.body_img1}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
       </div>
       <div class="relative w-full aspect-[2/1]">
-        <img :src="`${$config.public.serverURL}${category.body_img2}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
+        <img :src="`${$config.public.serverURL}/${category.body_img2}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
       </div>
       <div class="relative w-full aspect-[2/1]">
-        <img :src="`${$config.public.serverURL}${category.body_img3}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
+        <img :src="`${$config.public.serverURL}/${category.body_img3}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
       </div>
     </div>
   </div>

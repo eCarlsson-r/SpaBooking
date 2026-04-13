@@ -1,4 +1,3 @@
-import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'pathe'
 import { addComponent } from 'nuxt/kit'
 import presetIcons from '@unocss/preset-icons'
@@ -27,6 +26,7 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.APP_URL+'/api',
       serverURL: process.env.APP_URL || 'http://localhost:8000',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://carlsson-spa.com',
       reverbHost: process.env.REVERB_HOST || 'localhost',
       reverbKey: process.env.REVERB_KEY 
     }
@@ -74,7 +74,7 @@ export default defineNuxtConfig({
       filePath: '@/components/BaseIcon.vue',
       priority: 100,
     })
-  }, 'shadcn-nuxt'],
+  }],
 
   colorMode: {
     preference: 'light',
@@ -126,21 +126,6 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
-  },
-
-  shadcn: {
-    /**
-     * Prefix for all the imported component.
-     * @default "Ui"
-     */
-    prefix: '',
-    /**
-     * Directory that the component lives in.
-     * Will respect the Nuxt aliases.
-     * @link https://nuxt.com/docs/api/nuxt-config#alias
-     * @default "@/components/ui"
-     */
-    componentDir: '@/components/ui'
   },
 
   image: {
@@ -289,16 +274,10 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
+    enabled: false, // disabled due to unenv path incompatibility with Nuxt 3.21
     defaults: {
       extension: 'jpeg',
     },
-    // OG images and nuxtseo features can be previewed with nuxt-devtools during development. OG images can also be viewed using URL in this form - `/__og-image__/image/<path>/og.<extension>. For eg, {{site.url}}/__og-image__/image/og.png
-    // fonts: ['Inter:400', 'Inter:700'],
-    //
-    // defaults: { width: 1200, height: 600, emojis: 'noto', renderer: 'satori', component: 'NuxtSeo', cacheMaxAgeSeconds: 60 * 60 * 24 * 3 },
-    //
-    // disable at a global level
-    // runtimeCacheStorage: false,
   },
 
   linkChecker: {
@@ -344,15 +323,7 @@ export default defineNuxtConfig({
         // restartOnConfigUpdate: true,
         restartOnThemeUpdate: true,
       },
-      // plugins: [
-      //   {
-      //     name: 'My Awesome Lib 3.0',
-      //     key: 'my-awesome-lib',
-      //     pluginPath: fileURLToPath(
-      //       new URL('./web-types/my-awesome-lib.json', import.meta.url),
-      //     ),
-      //   },
-      // ],
+      // plugins: [],
     },
   },
 

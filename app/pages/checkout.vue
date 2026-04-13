@@ -32,7 +32,7 @@ const removeItem = async (id) => {
         <span class="text-slate-500">Total Amount</span>
         <span class="text-xl font-black text-blue-600">{{ formatIDR(total) }}</span>
       </div>
-      <Button class="w-full h-14 text-lg font-bold">Checkout Now</Button>
+      <UButton class="w-full h-14 text-lg font-bold">Checkout Now</UButton>
     </div>
   </div>
 </template>

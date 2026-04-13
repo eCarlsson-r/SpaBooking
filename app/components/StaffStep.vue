@@ -1,5 +1,5 @@
 <script setup>
-import { toast } from 'vue-sonner'
+const toast = useToast()
 const bookingStore = useBookingStore()
 
 const { $api } = useNuxtApp();
@@ -29,16 +29,16 @@ const selectStaff = async (emp) => {
     await bookingStore.saveToCart()
     
     // Trigger the Toaster
-    toast({
+    toast.add({
       title: "Success!",
       description: `${bookingStore.selection.treatment.name} added to cart.`,
-      variant: "success", // or "default" / "destructive"
+      color: 'green',
     })
   } catch (e) {
-    toast({
+    toast.add({
       title: "Error",
       description: "An error occurred while adding to cart.",
-      variant: "destructive",
+      color: 'red',
     })
   }
   
