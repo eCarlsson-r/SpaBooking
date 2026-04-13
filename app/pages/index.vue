@@ -1,5 +1,7 @@
 <script setup lang="ts">
   // 1. Import your auth store
+  import type { Category } from '~~/types/store'
+
   const auth = useAuthStore();
 
   // 2. (Optional but recommended) If you need to keep properties reactive 
@@ -21,8 +23,12 @@
 
   const { $api } = useNuxtApp();
 
-  // useAsyncData is preferred over useFetch when using a custom fetcher
-  const { data: categories, refresh: refreshCategories } = await useAsyncData('category', () => $api('/category'))
+  const config = useRuntimeConfig()
+  const { data: categories, refresh: refreshCategories } = await useAsyncData<Category[]>(
+    'category',
+    () => $fetch(`${config.public.apiBase}/category`),
+    { default: (): Category[] => [] }
+  )
 
   // Just pass the map of types to their refresh functions
   useRealtimeSync({

@@ -1,5 +1,4 @@
-import { useHead, useSeoMeta } from '@unhead/vue'
-import { useSchemaOrg, defineWebSite, defineWebPage } from '@unhead/schema-org'
+import { useHead, useSeoMeta, useSchemaOrg, defineWebSite, defineWebPage } from '#imports'
 
 import siteMeta from '@/site'
 

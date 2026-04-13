@@ -2,7 +2,7 @@
   import type { Category } from '~~/types/store'
   const props = defineProps({
     categories: {
-      type: Object,
+      type: Array as PropType<Category[]>,
       required: true
     }
   });

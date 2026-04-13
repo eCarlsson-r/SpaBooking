@@ -41,7 +41,8 @@
     "@nuxtjs/critters": "^0.8.0",
     "@nuxtjs/fontaine": "^0.4.4",
     "@nuxtjs/html-validator": "^1.8.2",
-    "@nuxtjs/seo": "^2.0.0-rc.19",
+    "@nuxtjs/seo": "^2.2.0",
+    "nuxt-seo-utils": "^6.0.11",
     "@pinegrow/nuxt-module": "^3.0.69",
     "@pinegrow/nuxtui-plugin": "^3.0.40",
     "@pinegrow/tailwindcss-plugin": "^3.0.35",
@@ -49,8 +50,8 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.10.6",
-    "@unocss/nuxt": "^65.4.0",
-    "@unocss/preset-icons": "^65.5.0",
+    "@unocss/nuxt": "^66.6.8",
+    "@unocss/preset-icons": "^66.6.8",
     "@vueuse/nuxt": "^12.4.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
@@ -65,6 +66,7 @@
     "typescript": "^5.7.3"
   },
   "overrides": {
-    "glob": "^11.0.0"
+    "glob": "^11.0.0",
+    "nuxt-seo-utils": "^6.0.11"
   }
 }

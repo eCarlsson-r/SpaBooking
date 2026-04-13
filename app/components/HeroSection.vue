@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const { $api } = useNuxtApp();
-
-// useAsyncData is preferred over useFetch when using a custom fetcher
-const { data: banners, error } = await useAsyncData<any[]>('banner', () => 
-  $api('/banner')
-);
+const config = useRuntimeConfig()
+const { data: banners, error } = await useAsyncData<any[]>(
+  'banner',
+  () => $api(`${config.public.apiBase}/banner`),
+  { default: () => [] }
+)
 
 if (error.value) {
   // Handle error (e.g., show a fallback banner)

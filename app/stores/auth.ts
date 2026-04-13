@@ -1,8 +1,6 @@
 export const useAuthStore = defineStore('auth', () => {
    const user = ref(null);
    const { $api } = useNuxtApp();
-   const ui = useUIStore()
-   const bookingStore = useBookingStore()
 
    const token = useCookie('auth_token', {
       maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -37,9 +35,11 @@ export const useAuthStore = defineStore('auth', () => {
          }
          // 4. Set the customer ID for the booking process
          if (response.data?.customer?.id) {
+            const bookingStore = useBookingStore();
             bookingStore.setCustomer(response.data.customer.id);
          }
          // CLOSE THE MODAL automatically after successful login
+         const ui = useUIStore();
          ui.closeLogin();
 
          return response
@@ -63,6 +63,7 @@ export const useAuthStore = defineStore('auth', () => {
          token.value = null
          
          // 3. Reset booking data if needed
+         const bookingStore = useBookingStore();
          bookingStore.setCustomer(null)
 
          // 4. Redirect to home or refresh the page

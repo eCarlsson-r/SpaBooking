@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.APP_URL+'/api',
+      apiBase: (process.env.APP_URL || 'http://localhost:8000') + '/api',
       serverURL: process.env.APP_URL || 'http://localhost:8000',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://carlsson-spa.com',
       reverbHost: process.env.REVERB_HOST || 'localhost',
@@ -274,7 +274,7 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    enabled: false, // disabled due to unenv path incompatibility with Nuxt 3.21
+    enabled: false,
     defaults: {
       extension: 'jpeg',
     },
