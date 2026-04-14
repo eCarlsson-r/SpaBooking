@@ -57,7 +57,7 @@
 </script>
 <template>
   <UCard class="md:w-full">
-    <NuxtImg :src="icon_img ? `${$config.public.serverURL}/${icon_img}` : '//placehold.co/180x180'" height="250" />
+    <NuxtImg :src="icon_img ? `${$config.public.serverURL}${icon_img}` : '//placehold.co/180x180'" height="250" />
     <div>
       <span>{{ name }}</span>
       <div class="flex font-medium items-center justify-between mt-2">

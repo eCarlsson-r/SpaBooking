@@ -42,7 +42,7 @@
   <div class="flex flex-col sm:flex-row items-center gap-6">
     <div class="flex flex-1 gap-4 items-start">
       <NuxtImg 
-        :src="item.treatment.icon_img ? `${$config.public.serverURL}/${item.treatment.icon_img}` : '//placehold.co/180x180'" 
+        :src="item.treatment.icon_img ? `${$config.public.serverURL}${item.treatment.icon_img}` : '//placehold.co/180x180'" 
         class="w-32 h-32 rounded-2xl object-cover shadow-sm"
       />
       <div>

@@ -18,7 +18,7 @@
     <div class="flex-1 flex flex-col sm:flex-row">
       <div class="hidden md:block w-1/2 relative overflow-hidden">
         <img 
-          :src="currentCategoryData.header_img ? `${$config.public.serverURL}/${currentCategoryData.header_img}` : 'price-tabs.webp'"
+          :src="currentCategoryData.header_img ? `${$config.public.serverURL}${currentCategoryData.header_img}` : 'price-tabs.webp'"
           class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           alt="Category Image"
         >

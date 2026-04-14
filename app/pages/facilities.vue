@@ -3,7 +3,7 @@
     <h1 class="text-3xl font-bold mb-6">Our Treatment Rooms</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <UCard v-for="room in rooms" :key="room.id" :title="room.name">
-        <NuxtImg :src="room.image ? `${$config.public.serverURL}/${room.image}` : '//placehold.co/600x400'" height="250" />
+        <NuxtImg :src="room.image ? `${$config.public.serverURL}${room.image}` : '//placehold.co/600x400'" height="250" />
         <div>
           <h5>{{ room.name }}</h5>
           <span>{{ room.description }}</span>

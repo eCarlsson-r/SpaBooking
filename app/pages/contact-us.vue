@@ -59,7 +59,7 @@
         </div>
 
         <div>
-          <img :src="branch.image ? `${$config.public.serverURL}/${branch.image}` : '//placehold.co/180x180'" class="w-full h-[200px] object-cover rounded-3xl" alt="">
+          <img :src="branch.image ? `${$config.public.serverURL}${branch.image}` : '//placehold.co/180x180'" class="w-full h-[200px] object-cover rounded-3xl" alt="">
         </div>
       </div>
     </div>

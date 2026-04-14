@@ -22,7 +22,7 @@ if (error.value) {
       arrows
     >
       <div class="relative w-full aspect-[2/1] md:aspect-[3/1]">
-        <img :src="`${$config.public.serverURL}/${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
+        <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
           
           <div class="px-8 md:px-16 w-full text-center text-white space-y-4">
