@@ -8,6 +8,8 @@
     "url": "https://github.com/pinegrow/pg-nuxtui.git"
   },
   "scripts": {
+    "test": "vitest --run",
+    "test:watch": "vitest",
     "dev": "nuxt dev",
     "now": "npm run build && npm run preview",
     "lighthouse": "npx unlighthouse --no-cache --site https://pg-nuxtui.netlify.app",
@@ -42,7 +44,6 @@
     "@nuxtjs/fontaine": "^0.4.4",
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/seo": "^2.2.0",
-    "nuxt-seo-utils": "^6.0.11",
     "@pinegrow/nuxt-module": "^3.0.69",
     "@pinegrow/nuxtui-plugin": "^3.0.40",
     "@pinegrow/tailwindcss-plugin": "^3.0.35",
@@ -52,18 +53,24 @@
     "@types/node": "^22.10.6",
     "@unocss/nuxt": "^66.6.8",
     "@unocss/preset-icons": "^66.6.8",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/test-utils": "^2.4.6",
     "@vueuse/nuxt": "^12.4.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
+    "fast-check": "^4.6.0",
+    "happy-dom": "^20.9.0",
     "npm-run-all": "^4.1.5",
     "nuxt": "^3.15.1",
     "nuxt-icon": "^0.6.10",
+    "nuxt-seo-utils": "^6.0.11",
     "postcss": "^8.5.0",
     "prettier": "^3.4.2",
     "rehype-external-links": "^3.0.0",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.4"
   },
   "overrides": {
     "glob": "^11.0.0",

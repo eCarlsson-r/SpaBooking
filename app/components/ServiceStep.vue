@@ -1,5 +1,6 @@
 <script setup>
 const bookingStore = useBookingStore()
+const authStore = useAuthStore()
 const { $api } = useNuxtApp()
 const { data: categories, refresh: refreshCategories } = await useAsyncData('category', () => $api('/category'))
 useRealtimeSync({ 'category': refreshCategories })
@@ -18,6 +19,12 @@ const handleTreatmentSelect = (treatment) => {
 
 <template>
   <div class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
+    <!-- AI Recommendations in booking flow -->
+    <AiRecommendationPanel
+      :customer-id="authStore.user?.customer?.id"
+      :branch-id="bookingStore.selection.branch_id"
+    />
+
     <div v-for="cat in categories" :key="cat.id">
       <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{{ cat.name }}</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2">

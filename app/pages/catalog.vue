@@ -1,6 +1,13 @@
 <template>
   <div class="p-8">
     <h1 class="text-3xl font-bold mb-6">Our Treatment Vouchers</h1>
+
+    <!-- AI Recommendations for logged-in customers -->
+    <AiRecommendationPanel
+      :customer-id="useAuthStore().user?.customer?.id"
+      :branch-id="null"
+    />
+
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
       <VoucherCard
         v-for="treatment in treatments" 
