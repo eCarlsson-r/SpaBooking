@@ -1,0 +1,237 @@
+{
+  "nav": {
+    "treatments": "Treatments",
+    "vouchers": "Vouchers",
+    "facilities": "Facilities",
+    "contact": "Contact",
+    "signIn": "Sign In / Join Us",
+    "signOut": "Sign Out",
+    "profile": "Profile",
+    "myBookings": "My Bookings",
+    "myVouchers": "My Vouchers",
+    "purchaseHistory": "Purchase History"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signInSubtitle": "Please enter your email and password to sign in.",
+    "email": "Email",
+    "emailPlaceholder": "name@email.com",
+    "password": "Password",
+    "noAccount": "Don't have an account?",
+    "registerNow": "Register Now"
+  },
+  "register": {
+    "personalData": "Personal Data",
+    "yourAccount": "Your account",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Full Name",
+    "male": "Male",
+    "female": "Female",
+    "placeOfBirth": "Place of Birth",
+    "dateOfBirth": "Date of Birth",
+    "whatsappNumber": "WhatsApp Number (e.g. 0812...)",
+    "emailUsername": "Email (Username)",
+    "passwordPlaceholder": "Password",
+    "confirmPassword": "Confirm Password",
+    "nextStep": "Next Step",
+    "registerNow": "REGISTER NOW"
+  },
+  "booking": {
+    "steps": {
+      "branch": "branch",
+      "treatment": "treatment",
+      "date": "date",
+      "room": "room",
+      "staff": "staff",
+      "confirm": "confirm"
+    },
+    "selectDate": "Select Date",
+    "selectTime": "Select Arrival Time",
+    "selectRoom": "Select Room / Bed",
+    "selectTherapist": "Select therapist",
+    "bookNow": "Book Now",
+    "selectDatePlaceholder": "Select date",
+    "selectTreatmentPlaceholder": "Select treatment",
+    "mins": "mins",
+    "addedToCart": "added to cart.",
+    "addToCartError": "An error occurred while adding to cart.",
+    "success": "Success!",
+    "error": "Error"
+  },
+  "confirm": {
+    "orderSaved": "Order Saved",
+    "orderSavedSubtitle": "Therapist and room are ready for you.",
+    "treatment": "Treatment",
+    "time": "Time",
+    "therapistRoom": "Therapist / Room",
+    "total": "Total",
+    "proceedToPayment": "Proceed to Payment",
+    "backToHome": "Back to Home"
+  },
+  "cart": {
+    "title": "Order Cart",
+    "empty": "Your cart is empty.",
+    "findTreatment": "Find Treatment",
+    "totalPayment": "Total Payment",
+    "payNow": "PAY NOW",
+    "voucherPurchase": "Voucher Purchase",
+    "sessionOrder": "Session Order",
+    "voucherNoExpiry": "Voucher without expiry",
+    "date": "Date",
+    "time": "Time",
+    "therapist": "Therapist",
+    "room": "Room",
+    "subtotal": "Subtotal",
+    "maxVoucherError": "Maximum purchase is 5 sets of voucher.",
+    "minVoucherError": "Need to purchase at least 1 set of voucher."
+  },
+  "checkout": {
+    "title": "Order Summary",
+    "totalAmount": "Total Amount",
+    "checkoutNow": "Checkout Now",
+    "remove": "Remove",
+    "therapist": "Therapist:"
+  },
+  "bookings": {
+    "title": "My Sessions",
+    "directions": "Directions",
+    "reschedule": "Reschedule",
+    "cancel": "Cancel",
+    "noSessions": "No walk-in sessions booked.",
+    "bookNow": "Book a session now",
+    "cancelConfirm": "Cancel walk-in session? This session cannot be returned."
+  },
+  "vouchers": {
+    "title": "My Vouchers",
+    "vouchersCount": "{count} vouchers",
+    "noVouchers": "You don't have any active vouchers yet.",
+    "browseTreatments": "Browse Treatments",
+    "id": "ID:"
+  },
+  "catalog": {
+    "title": "Our Treatment Vouchers",
+    "buy": "Buy",
+    "askPrice": "Ask Price"
+  },
+  "history": {
+    "title": "Purchase List",
+    "noTransactions": "No transactions found yet."
+  },
+  "facilities": {
+    "title": "Our Treatment Rooms"
+  },
+  "contact": {
+    "branchLocation": "Branch Location",
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "bookAtBranch": "Book at this Branch",
+    "selectBranchForMap": "Select a branch to view the map"
+  },
+  "profile": {
+    "welcomeBack": "Welcome back,",
+    "myBookings": "My Bookings",
+    "manageSessions": "Manage Sessions",
+    "voucherWallet": "Voucher Wallet",
+    "usageProgress": "Usage & Progress",
+    "purchaseHistory": "Purchase History",
+    "receiptsOrders": "Receipts & Orders",
+    "signOut": "Sign Out of Account",
+    "profileTitle": "Profile",
+    "edit": "Edit",
+    "close": "Close",
+    "fullName": "Full Name",
+    "phoneNumber": "Phone Number",
+    "updateProfile": "Update Profile",
+    "profileUpdated": "Profile updated successfully!",
+    "profileUpdateFailed": "Failed to update profile. Please try again.",
+    "referFriend": "Refer a Friend",
+    "referralDescription": "Share your unique code. When your friends register, they get a special offer on their first walk-in.",
+    "referralCopied": "Referral link copied to clipboard!"
+  },
+  "reschedule": {
+    "title": "Reschedule",
+    "selectNewDate": "Select New Date",
+    "selectNewTime": "Select New Time",
+    "confirmChanges": "Confirm Changes",
+    "failedToReschedule": "Failed to change schedule."
+  },
+  "footer": {
+    "copyright": "Spa Premier WebApp © 2025 - {year}. All Rights Reserved"
+  },
+  "hero": {
+    "aboutUs": "About Us",
+    "aboutUsSubtitle": "Brief description about us",
+    "aboutUsDescription": "Spa Premier WebApp provides luxury Balinese treatments designed for your ultimate relaxation.",
+    "operationalHours": "Operational Hours",
+    "operationalHoursSubtitle": "Our operational schedule",
+    "operationalHoursValue": "Monday - Sunday: 09:00 - 18:00",
+    "services": "Services",
+    "servicesSubtitle": "We are providing"
+  },
+  "ai": {
+    "bookingAssistant": "Booking Assistant",
+    "chatPlaceholder": "Type your message...",
+    "chatEmptyState": "Hi! How can I help you book a treatment today?",
+    "assistantUnavailable": "The assistant is temporarily unavailable.",
+    "goToManualBooking": "Go to manual booking →",
+    "recommendedForYou": "Recommended for You",
+    "foundBookingOption": "I found a booking option for you. Taking you to checkout now...",
+    "feedbackTitle": "How was your session?",
+    "yourRating": "Your Rating",
+    "comments": "Comments",
+    "commentsOptional": "(optional)",
+    "commentPlaceholder": "Tell us about your experience…",
+    "skipForNow": "Skip for now",
+    "submitFeedback": "Submit Feedback",
+    "submitting": "Submitting…",
+    "ratingLabels": {
+      "1": "Poor",
+      "2": "Fair",
+      "3": "Good",
+      "4": "Very good",
+      "5": "Excellent"
+    },
+    "feedbackWindowClosed": "The feedback window for this session has closed.",
+    "feedbackAlreadySubmitted": "You have already submitted feedback for this session.",
+    "feedbackError": "Something went wrong. Please try again.",
+    "schedulingConflict": "Scheduling Conflict Detected",
+    "therapistDoubleBooking": "Therapist double-booking",
+    "roomDoubleBooking": "Room double-booking",
+    "availableAlternativeSlots": "Available Alternative Slots",
+    "noAlternativeSlots": "No alternative slots are currently available. Please contact the spa directly.",
+    "bookingRescheduled": "Booking Rescheduled",
+    "bookingRescheduledDescription": "Your booking has been moved to {date} from {startTime} to {endTime}.",
+    "done": "Done",
+    "dismissSuggestion": "Dismiss suggestion",
+    "dismissing": "Dismissing…",
+    "rescheduleError": "Failed to reschedule. Please try again or contact support.",
+    "room": "Room {id}"
+  },
+  "offline": {
+    "banner": "You are offline. {count} operation(s) pending.",
+    "backOnline": "Back online. All changes synced.",
+    "syncFailed": "Sync failed for: {operation}"
+  },
+  "pwa": {
+    "installPrompt": "Install SpaBooking for offline access",
+    "installAccept": "Install",
+    "installDismiss": "Not now",
+    "updateAvailable": "A new version is available.",
+    "updateRefresh": "Refresh to update"
+  },
+  "status": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "pending": "Pending",
+    "syncing": "Syncing",
+    "failed": "Failed"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "emailInvalid": "Please enter a valid email address.",
+    "passwordMismatch": "Passwords do not match.",
+    "minLength": "Must be at least {min} characters.",
+    "maxLength": "Must be at most {max} characters."
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "nav": {
+    "treatments": "Perawatan",
+    "vouchers": "Voucher",
+    "facilities": "Fasilitas",
+    "contact": "Kontak",
+    "signIn": "Masuk / Daftar",
+    "signOut": "Keluar",
+    "profile": "Profil",
+    "myBookings": "Reservasi Saya",
+    "myVouchers": "Voucher Saya",
+    "purchaseHistory": "Riwayat Pembelian"
+  },
+  "auth": {
+    "signIn": "Masuk",
+    "signInSubtitle": "Masukkan email dan kata sandi Anda untuk masuk.",
+    "email": "Email",
+    "emailPlaceholder": "nama@email.com",
+    "password": "Kata Sandi",
+    "noAccount": "Belum punya akun?",
+    "registerNow": "Daftar Sekarang"
+  },
+  "register": {
+    "personalData": "Data Pribadi",
+    "yourAccount": "Akun Anda",
+    "fullName": "Nama Lengkap",
+    "fullNamePlaceholder": "Nama Lengkap",
+    "male": "Laki-laki",
+    "female": "Perempuan",
+    "placeOfBirth": "Tempat Lahir",
+    "dateOfBirth": "Tanggal Lahir",
+    "whatsappNumber": "Nomor WhatsApp (mis. 0812...)",
+    "emailUsername": "Email (Nama Pengguna)",
+    "passwordPlaceholder": "Kata Sandi",
+    "confirmPassword": "Konfirmasi Kata Sandi",
+    "nextStep": "Langkah Berikutnya",
+    "registerNow": "DAFTAR SEKARANG"
+  },
+  "booking": {
+    "steps": {
+      "branch": "cabang",
+      "treatment": "perawatan",
+      "date": "tanggal",
+      "room": "kamar",
+      "staff": "terapis",
+      "confirm": "konfirmasi"
+    },
+    "selectDate": "Pilih Tanggal",
+    "selectTime": "Pilih Jam Kedatangan",
+    "selectRoom": "Pilih Kamar / Bed",
+    "selectTherapist": "Pilih terapis",
+    "bookNow": "Pesan Sekarang",
+    "selectDatePlaceholder": "Pilih tanggal",
+    "selectTreatmentPlaceholder": "Pilih perawatan",
+    "mins": "menit",
+    "addedToCart": "ditambahkan ke keranjang.",
+    "addToCartError": "Terjadi kesalahan saat menambahkan ke keranjang.",
+    "success": "Berhasil!",
+    "error": "Kesalahan"
+  },
+  "confirm": {
+    "orderSaved": "Pesanan Tersimpan",
+    "orderSavedSubtitle": "Terapis dan kamar sudah siap untuk Anda.",
+    "treatment": "Perawatan",
+    "time": "Waktu",
+    "therapistRoom": "Terapis / Kamar",
+    "total": "Total",
+    "proceedToPayment": "Lanjut ke Pembayaran",
+    "backToHome": "Kembali ke Beranda"
+  },
+  "cart": {
+    "title": "Keranjang Pesanan",
+    "empty": "Keranjang Anda kosong.",
+    "findTreatment": "Cari Perawatan",
+    "totalPayment": "Total Pembayaran",
+    "payNow": "BAYAR SEKARANG",
+    "voucherPurchase": "Pembelian Voucher",
+    "sessionOrder": "Pesanan Sesi",
+    "voucherNoExpiry": "Voucher tanpa kedaluwarsa",
+    "date": "Tanggal",
+    "time": "Waktu",
+    "therapist": "Terapis",
+    "room": "Kamar",
+    "subtotal": "Subtotal",
+    "maxVoucherError": "Maksimal pembelian adalah 5 set voucher.",
+    "minVoucherError": "Minimal pembelian adalah 1 set voucher."
+  },
+  "checkout": {
+    "title": "Ringkasan Pesanan",
+    "totalAmount": "Total Pembayaran",
+    "checkoutNow": "Bayar Sekarang",
+    "remove": "Hapus",
+    "therapist": "Terapis:"
+  },
+  "bookings": {
+    "title": "Sesi Saya",
+    "directions": "Petunjuk Arah",
+    "reschedule": "Jadwal Ulang",
+    "cancel": "Batalkan",
+    "noSessions": "Belum ada sesi walk-in yang dipesan.",
+    "bookNow": "Pesan sesi sekarang",
+    "cancelConfirm": "Batalkan sesi walk-in? Sesi ini tidak dapat dikembalikan."
+  },
+  "vouchers": {
+    "title": "Voucher Saya",
+    "vouchersCount": "{count} voucher",
+    "noVouchers": "Anda belum memiliki voucher aktif.",
+    "browseTreatments": "Jelajahi Perawatan",
+    "id": "ID:"
+  },
+  "catalog": {
+    "title": "Voucher Perawatan Kami",
+    "buy": "Beli",
+    "askPrice": "Tanya Harga"
+  },
+  "history": {
+    "title": "Daftar Pembelian",
+    "noTransactions": "Belum ada transaksi."
+  },
+  "facilities": {
+    "title": "Ruang Perawatan Kami"
+  },
+  "contact": {
+    "branchLocation": "Lokasi Cabang",
+    "whatsapp": "WhatsApp",
+    "call": "Telepon",
+    "bookAtBranch": "Pesan di Cabang Ini",
+    "selectBranchForMap": "Pilih cabang untuk melihat peta"
+  },
+  "profile": {
+    "welcomeBack": "Selamat datang kembali,",
+    "myBookings": "Reservasi Saya",
+    "manageSessions": "Kelola Sesi",
+    "voucherWallet": "Dompet Voucher",
+    "usageProgress": "Penggunaan & Progres",
+    "purchaseHistory": "Riwayat Pembelian",
+    "receiptsOrders": "Kwitansi & Pesanan",
+    "signOut": "Keluar dari Akun",
+    "profileTitle": "Profil",
+    "edit": "Ubah",
+    "close": "Tutup",
+    "fullName": "Nama Lengkap",
+    "phoneNumber": "Nomor Telepon",
+    "updateProfile": "Perbarui Profil",
+    "profileUpdated": "Profil berhasil diperbarui!",
+    "profileUpdateFailed": "Gagal memperbarui profil. Silakan coba lagi.",
+    "referFriend": "Ajak Teman",
+    "referralDescription": "Bagikan kode unik Anda. Ketika teman Anda mendaftar, mereka mendapat penawaran spesial untuk kunjungan pertama.",
+    "referralCopied": "Tautan referral disalin ke clipboard!"
+  },
+  "reschedule": {
+    "title": "Jadwal Ulang",
+    "selectNewDate": "Pilih Tanggal Baru",
+    "selectNewTime": "Pilih Waktu Baru",
+    "confirmChanges": "Konfirmasi Perubahan",
+    "failedToReschedule": "Gagal mengubah jadwal."
+  },
+  "footer": {
+    "copyright": "Spa Premier WebApp © 2025 - {year}. Hak Cipta Dilindungi"
+  },
+  "hero": {
+    "aboutUs": "Tentang Kami",
+    "aboutUsSubtitle": "Deskripsi singkat tentang kami",
+    "aboutUsDescription": "Spa Premier WebApp menyediakan perawatan Bali mewah yang dirancang untuk relaksasi terbaik Anda.",
+    "operationalHours": "Jam Operasional",
+    "operationalHoursSubtitle": "Jadwal operasional kami",
+    "operationalHoursValue": "Senin - Minggu: 09:00 - 18:00",
+    "services": "Layanan",
+    "servicesSubtitle": "Kami menyediakan"
+  },
+  "ai": {
+    "bookingAssistant": "Asisten Pemesanan",
+    "chatPlaceholder": "Ketik pesan Anda...",
+    "chatEmptyState": "Halo! Bagaimana saya bisa membantu Anda memesan perawatan hari ini?",
+    "assistantUnavailable": "Asisten sementara tidak tersedia.",
+    "goToManualBooking": "Ke pemesanan manual →",
+    "recommendedForYou": "Direkomendasikan untuk Anda",
+    "foundBookingOption": "Saya menemukan pilihan pemesanan untuk Anda. Membawa Anda ke checkout sekarang...",
+    "feedbackTitle": "Bagaimana sesi Anda?",
+    "yourRating": "Penilaian Anda",
+    "comments": "Komentar",
+    "commentsOptional": "(opsional)",
+    "commentPlaceholder": "Ceritakan pengalaman Anda…",
+    "skipForNow": "Lewati untuk sekarang",
+    "submitFeedback": "Kirim Ulasan",
+    "submitting": "Mengirim…",
+    "ratingLabels": {
+      "1": "Buruk",
+      "2": "Cukup",
+      "3": "Baik",
+      "4": "Sangat Baik",
+      "5": "Luar Biasa"
+    },
+    "feedbackWindowClosed": "Jendela ulasan untuk sesi ini telah ditutup.",
+    "feedbackAlreadySubmitted": "Anda sudah mengirimkan ulasan untuk sesi ini.",
+    "feedbackError": "Terjadi kesalahan. Silakan coba lagi.",
+    "schedulingConflict": "Konflik Jadwal Terdeteksi",
+    "therapistDoubleBooking": "Pemesanan ganda terapis",
+    "roomDoubleBooking": "Pemesanan ganda kamar",
+    "availableAlternativeSlots": "Slot Alternatif yang Tersedia",
+    "noAlternativeSlots": "Tidak ada slot alternatif yang tersedia saat ini. Silakan hubungi spa secara langsung.",
+    "bookingRescheduled": "Pemesanan Dijadwal Ulang",
+    "bookingRescheduledDescription": "Pemesanan Anda telah dipindahkan ke {date} dari {startTime} hingga {endTime}.",
+    "done": "Selesai",
+    "dismissSuggestion": "Abaikan saran",
+    "dismissing": "Mengabaikan…",
+    "rescheduleError": "Gagal menjadwal ulang. Silakan coba lagi atau hubungi dukungan.",
+    "room": "Kamar {id}"
+  },
+  "offline": {
+    "banner": "Anda sedang offline. {count} operasi tertunda.",
+    "backOnline": "Kembali online. Semua perubahan telah disinkronkan.",
+    "syncFailed": "Sinkronisasi gagal untuk: {operation}"
+  },
+  "pwa": {
+    "installPrompt": "Pasang SpaBooking untuk akses offline",
+    "installAccept": "Pasang",
+    "installDismiss": "Nanti saja",
+    "updateAvailable": "Versi baru tersedia.",
+    "updateRefresh": "Muat ulang untuk memperbarui"
+  },
+  "status": {
+    "loading": "Memuat...",
+    "error": "Kesalahan",
+    "success": "Berhasil",
+    "pending": "Tertunda",
+    "syncing": "Menyinkronkan",
+    "failed": "Gagal"
+  },
+  "validation": {
+    "required": "Kolom ini wajib diisi.",
+    "emailInvalid": "Masukkan alamat email yang valid.",
+    "passwordMismatch": "Kata sandi tidak cocok.",
+    "minLength": "Minimal {min} karakter.",
+    "maxLength": "Maksimal {max} karakter."
+  }
+}

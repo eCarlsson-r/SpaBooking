@@ -68,7 +68,7 @@ export default defineNuxtConfig({
   '@nuxt/image', '@vee-validate/nuxt', '@nuxtjs/seo', // '@nuxtjs/fontaine', // blocked by https://github.com/nuxt-modules/fontaine/issues/342
   '@nuxtjs/critters', // '@nuxt/icon', // Pre-included by @nuxt/ui
   // To be replaced with @nuxt-icon (above), once NuxtSEO drops using this/becomes stable..
-  'nuxt-icon', '@nuxt/eslint', '@nuxt/ui', function () {
+  'nuxt-icon', '@nuxt/eslint', '@nuxt/ui', '@vite-pwa/nuxt', '@nuxtjs/i18n', function () {
     addComponent({
       name: 'UIcon',
       filePath: '@/components/BaseIcon.vue',
@@ -324,6 +324,64 @@ export default defineNuxtConfig({
         restartOnThemeUpdate: true,
       },
       // plugins: [],
+    },
+  },
+
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'Carlsson Spa Booking',
+      short_name: 'SpaBooking',
+      description: 'Book spa treatments online',
+      start_url: '/en/',
+      display: 'standalone',
+      theme_color: '#0084d1',
+      background_color: '#ffffff',
+      icons: [
+        { src: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+      ],
+    },
+    workbox: {
+      additionalManifestEntries: [
+        { url: '/i18n/locales/en.json', revision: null },
+        { url: '/i18n/locales/id.json', revision: null },
+      ],
+      runtimeCaching: [
+        {
+          urlPattern: /\/assets\/.*/i,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'static-assets',
+            expiration: { maxAgeSeconds: 30 * 24 * 60 * 60 },
+          },
+        },
+        {
+          urlPattern: ({ url }: { url: URL }) => url.pathname.startsWith('/api'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api-cache',
+            networkTimeoutSeconds: 5,
+            expiration: { maxEntries: 100, maxAgeSeconds: 24 * 60 * 60 },
+          },
+        },
+      ],
+    },
+  },
+
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'id', name: 'Bahasa Indonesia', file: 'id.json' },
+    ],
+    defaultLocale: 'en',
+    langDir: 'i18n/locales/',
+    strategy: 'prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'spa-locale',
+      redirectOn: 'root',
+      fallbackLocale: 'en',
     },
   },
 
