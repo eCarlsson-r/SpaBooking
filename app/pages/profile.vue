@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n()
 const auth = useAuthStore();
 
 const handleLogout = () => {
@@ -10,7 +11,7 @@ const handleLogout = () => {
 <template>
   <div class="min-h-screen bg-slate dark:bg-slate-95050 dark:bg-slate-950 pb-32">
     <div class="px-6 pt-8 pb-6">
-      <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">Welcome back,</p>
+      <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">{{ t('profile.welcomeBack') }}</p>
       <h1 class="text-3xl font-black italic text-primary-900">{{ auth.user?.customer.name }}</h1>
     </div>
 
@@ -21,8 +22,8 @@ const handleLogout = () => {
             <UIcon name="i-mdi-calendar" class="w-6 h-6 text-primary-900 dark:text-primary-100" />
           </div>
           <div>
-            <p class="font-bold text-slate-800 dark:text-slate-200">My Bookings</p>
-            <p class="text-[10px] text-slate-400 uppercase font-bold">Manage Sessions</p>
+            <p class="font-bold text-slate-800 dark:text-slate-200">{{ t('profile.myBookings') }}</p>
+            <p class="text-[10px] text-slate-400 uppercase font-bold">{{ t('profile.manageSessions') }}</p>
           </div>
         </div>
         <UIcon name="i-material-symbols-chevron-right-rounded" class="w-5 h-5 text-slate-300" />
@@ -34,8 +35,8 @@ const handleLogout = () => {
             <UIcon name="i-ci-ticket-voucher" class="w-6 h-6 text-primary-900 dark:text-primary-100" />
           </div>
           <div>
-            <p class="font-bold text-slate-800 dark:text-slate-200">Voucher Wallet</p>
-            <p class="text-[10px] text-slate-400 uppercase font-bold">Usage & Progress</p>
+            <p class="font-bold text-slate-800 dark:text-slate-200">{{ t('profile.voucherWallet') }}</p>
+            <p class="text-[10px] text-slate-400 uppercase font-bold">{{ t('profile.usageProgress') }}</p>
           </div>
         </div>
         <UIcon name="i-material-symbols-chevron-right-rounded" class="w-5 h-5 text-slate-300" />
@@ -47,8 +48,8 @@ const handleLogout = () => {
             <UIcon name="i-material-symbols-receipt" class="w-6 h-6 text-primary-900" />
           </div>
           <div>
-            <p class="font-bold text-slate-800 dark:text-slate-200">Purchase History</p>
-            <p class="text-[10px] text-slate-400 uppercase font-bold">Receipts & Orders</p>
+            <p class="font-bold text-slate-800 dark:text-slate-200">{{ t('profile.purchaseHistory') }}</p>
+            <p class="text-[10px] text-slate-400 uppercase font-bold">{{ t('profile.receiptsOrders') }}</p>
           </div>
         </div>
         <UIcon name="i-material-symbols-chevron-right-rounded" class="w-5 h-5 text-slate-300" />
@@ -62,7 +63,7 @@ const handleLogout = () => {
 
     <div class="px-6 mt-12">
       <button class="w-full py-4 text-slate-400 text-[10px] font-bold uppercase tracking-widest border-t border-slate-100" @click="handleLogout">
-        Sign Out of Account
+        {{ t('profile.signOut') }}
       </button>
     </div>
   </div>

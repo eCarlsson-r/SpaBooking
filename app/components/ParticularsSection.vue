@@ -1,4 +1,5 @@
 <script setup>
+  const { t } = useI18n()
   const toast = useToast()
   const auth = useAuthStore()
   const isEditing = ref(false)
@@ -10,14 +11,14 @@
     if (result.success) {
       isEditing.value = false
       toast.add({
-        title: "Success!",
-        description: "Profile updated successfully!",
+        title: t('booking.success'),
+        description: t('profile.profileUpdated'),
         color: 'green',
       })  
     } else {
       toast.add({
-        title: "Error",
-        description: "Failed to update profile. Please try again.",
+        title: t('booking.error'),
+        description: t('profile.profileUpdateFailed'),
         color: 'red',
       })
     }
@@ -39,8 +40,8 @@
         // Fallback: Copy to clipboard if Share API is not supported (Desktop)
         navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`)
         toast.add({
-          title: "Success!",
-          description: "Referral link copied to clipboard!",
+          title: t('booking.success'),
+          description: t('profile.referralCopied'),
           color: 'green',
         })
       }
@@ -54,20 +55,20 @@
     <div class="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-sm">
       <div class="flex justify-between items-center mb-8">
         <div>
-          <h3 class="font-black text-slate-800 italic tracking-tight text-xl uppercase">Profile</h3>
+          <h3 class="font-black text-slate-800 italic tracking-tight text-xl uppercase">{{ t('profile.profileTitle') }}</h3>
         </div>
         <button 
           class="text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-slate-100 transition-colors" 
           :class="isEditing ? 'bg-slate-900 text-white' : 'text-slate-400'"
           @click="isEditing = !isEditing"
         >
-          {{ isEditing ? 'Close' : 'Edit' }}
+          {{ isEditing ? t('profile.close') : t('profile.edit') }}
         </button>
       </div>
 
       <form class="space-y-5" @submit.prevent="saveProfile">
         <div class="flex flex-col">
-          <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1 ml-1">Nama Lengkap</label>
+          <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1 ml-1">{{ t('profile.fullName') }}</label>
           <input 
             v-if="isEditing" 
             v-model="editForm.name" 
@@ -77,7 +78,7 @@
         </div>
 
         <div class="flex flex-col">
-          <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1 ml-1">Nomor Telepon</label>
+          <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1 ml-1">{{ t('profile.phoneNumber') }}</label>
           <input 
             v-if="isEditing" 
             v-model="editForm.mobile" 
@@ -87,15 +88,15 @@
         </div>
 
         <button v-if="isEditing" type="submit" class="w-full py-4 bg-lime-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest mt-4">
-          Update Profile
+          {{ t('profile.updateProfile') }}
         </button>
       </form>
     </div>
 
     <div class="bg-primary-900 rounded-[2.5rem] p-8 text-white shadow-lg shadow-primary-900/20">
-      <h4 class="font-black italic text-lg uppercase tracking-tight">Refer a Friend</h4>
+      <h4 class="font-black italic text-lg uppercase tracking-tight">{{ t('profile.referFriend') }}</h4>
       <p class="text-[11px] text-white/70 mt-1 leading-relaxed">
-        Share your unique code. When your friends register, they get a special offer on their first walk-in.
+        {{ t('profile.referralDescription') }}
       </p>
       
       <div class="flex items-center justify-between mt-6 bg-white/10 p-4 rounded-2xl backdrop-blur-md">

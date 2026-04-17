@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n()
 const toast = useToast()
 const bookingStore = useBookingStore()
 
@@ -30,14 +31,14 @@ const selectStaff = async (emp) => {
     
     // Trigger the Toaster
     toast.add({
-      title: "Success!",
-      description: `${bookingStore.selection.treatment.name} added to cart.`,
+      title: t('booking.success'),
+      description: `${bookingStore.selection.treatment.name} ${t('booking.addedToCart')}`,
       color: 'green',
     })
   } catch (e) {
     toast.add({
-      title: "Error",
-      description: "An error occurred while adding to cart.",
+      title: t('booking.error'),
+      description: t('booking.addToCartError'),
       color: 'red',
     })
   }
@@ -47,7 +48,7 @@ const selectStaff = async (emp) => {
 
 <template>
   <div class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
-    <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Select therapist</h4>
+    <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">{{ t('booking.selectTherapist') }}</h4>
       <div class="grid grid-cols-2 gap-2">
         <button 
           v-for="t in therapists" :key="t.id"

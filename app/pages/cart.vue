@@ -1,4 +1,5 @@
 <script setup>
+    const { t } = useI18n()
     const cart = useCartStore();
     const auth = useAuthStore();
 
@@ -27,11 +28,11 @@
 
 <template>
   <div class="max-w-full min-h-screen pb-10">
-    <h1 class="text-2xl font-black p-6">Order Cart</h1>
+    <h1 class="text-2xl font-black p-6">{{ t('cart.title') }}</h1>
 
     <div v-if="cart.items.length === 0" class="px-6 text-center">
-      <p class="text-slate-400">Your cart is empty.</p>
-      <UButton variant="link" @click="navigateTo('/')">Find Treatment</UButton>
+      <p class="text-slate-400">{{ t('cart.empty') }}</p>
+      <UButton variant="link" @click="navigateTo('/')">{{ t('cart.findTreatment') }}</UButton>
     </div>
 
     <div v-else class="space-y-4">
@@ -49,11 +50,11 @@
         <div class="border-t p-6">
             <div class="w-full">
             <div class="flex justify-between mb-4">
-                <span class="text-slate-500 font-medium">Total Payment</span>
+                <span class="text-slate-500 font-medium">{{ t('cart.totalPayment') }}</span>
                 <span class="text-xl font-black text-[#8B6E1C]">{{ formatIDR(cart.totalPrice) }}</span>
             </div>
             <UButton class="w-full h-14 bg-[#B6CE00] hover:bg-[#a3b800] rounded-2xl text-white font-bold text-lg" @click="handleCheckout">
-                PAY NOW
+                {{ t('cart.payNow') }}
             </UButton>
             </div>
         </div>

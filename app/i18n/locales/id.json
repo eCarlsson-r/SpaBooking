@@ -15,7 +15,7 @@
     "signIn": "Masuk",
     "signInSubtitle": "Masukkan email dan kata sandi Anda untuk masuk.",
     "email": "Email",
-    "emailPlaceholder": "nama@email.com",
+    "emailPlaceholder": "nama{'@'}email.com",
     "password": "Kata Sandi",
     "noAccount": "Belum punya akun?",
     "registerNow": "Daftar Sekarang"
@@ -233,5 +233,15 @@
     "passwordMismatch": "Kata sandi tidak cocok.",
     "minLength": "Minimal {min} karakter.",
     "maxLength": "Maksimal {max} karakter."
+  },
+  "treatments": {
+    "title": "Kategori Perawatan Kami",
+    "bookNow": "Pesan Sekarang"
+  },
+  "error": {
+    "pageNotFound": "Halaman ini tidak dapat ditemukan",
+    "brokenLink": "Sepertinya Anda mengikuti tautan yang rusak atau memasukkan URL yang tidak ada di situs ini.",
+    "genericError": "Terjadi kesalahan",
+    "goBack": "Kembali"
   }
 }

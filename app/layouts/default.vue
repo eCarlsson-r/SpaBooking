@@ -33,6 +33,8 @@
       <LoginModal />
       <AiChatWidget />
       <TheFooter class="fixed bottom-0 w-full z-50" />
+      <OfflineIndicator />
+      <SyncNotification />
     </div>
     <!-- </div> -->
   </div>

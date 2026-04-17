@@ -17,6 +17,7 @@ const emit = defineEmits<{
   dismissed: []
 }>()
 
+const { t } = useI18n()
 const { $api } = useNuxtApp()
 
 // ── Form state ─────────────────────────────────────────────────────────────
@@ -65,11 +66,11 @@ const submit = async () => {
   } catch (err: any) {
     const status = err?.response?.status ?? err?.statusCode
     if (status === 422) {
-      error.value = 'The feedback window for this session has closed.'
+      error.value = t('ai.feedbackWindowClosed')
     } else if (status === 409) {
-      error.value = 'You have already submitted feedback for this session.'
+      error.value = t('ai.feedbackAlreadySubmitted')
     } else {
-      error.value = 'Something went wrong. Please try again.'
+      error.value = t('ai.feedbackError')
     }
   } finally {
     isSubmitting.value = false
@@ -95,12 +96,12 @@ const dismiss = () => {
         <div class="flex items-center gap-2">
           <UIcon name="i-material-symbols-star-rounded" class="w-5 h-5 shrink-0" />
           <span id="feedback-form-title" class="font-bold text-sm">
-            How was your session?
+            {{ t('ai.feedbackTitle') }}
           </span>
         </div>
         <button
           class="hover:opacity-75 transition-opacity"
-          aria-label="Dismiss feedback form"
+          :aria-label="t('ai.skipForNow')"
           :disabled="isSubmitting"
           @click="dismiss"
         >
@@ -114,12 +115,12 @@ const dismiss = () => {
         <!-- Star rating (Req 9.2) -->
         <div>
           <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
-            Your Rating <span class="text-red-500">*</span>
+            {{ t('ai.yourRating') }} <span class="text-red-500">*</span>
           </p>
           <div
             class="flex gap-2"
             role="radiogroup"
-            aria-label="Star rating"
+            :aria-label="t('ai.yourRating')"
           >
             <button
               v-for="star in 5"
@@ -142,7 +143,7 @@ const dismiss = () => {
             </button>
           </div>
           <p v-if="rating > 0" class="mt-1.5 text-xs text-slate-400 dark:text-slate-500">
-            {{ ['', 'Poor', 'Fair', 'Good', 'Very good', 'Excellent'][rating] }}
+            {{ t(`ai.ratingLabels.${rating}`) }}
           </p>
         </div>
 
@@ -152,14 +153,14 @@ const dismiss = () => {
             for="feedback-comment"
             class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2"
           >
-            Comments <span class="font-normal normal-case">(optional)</span>
+            {{ t('ai.comments') }} <span class="font-normal normal-case">{{ t('ai.commentsOptional') }}</span>
           </label>
           <textarea
             id="feedback-comment"
             v-model="comment"
             rows="4"
             maxlength="1000"
-            placeholder="Tell us about your experience…"
+            :placeholder="t('ai.commentPlaceholder')"
             class="w-full resize-none rounded-xl border border-slate-200 dark:border-neutral-600 bg-slate-50 dark:bg-neutral-800 text-slate-800 dark:text-slate-100 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 placeholder-slate-400 transition-colors"
             :class="{ 'border-red-400 focus:ring-red-400': isCommentTooLong }"
             :disabled="isSubmitting"
@@ -191,7 +192,7 @@ const dismiss = () => {
             :disabled="isSubmitting"
             @click="dismiss"
           >
-            Skip for now
+            {{ t('ai.skipForNow') }}
           </button>
 
           <button
@@ -205,7 +206,7 @@ const dismiss = () => {
               name="i-mdi-loading"
               class="w-4 h-4 animate-spin"
             />
-            <span>{{ isSubmitting ? 'Submitting…' : 'Submit Feedback' }}</span>
+            <span>{{ isSubmitting ? t('ai.submitting') : t('ai.submitFeedback') }}</span>
           </button>
         </div>
 

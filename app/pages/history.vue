@@ -1,6 +1,6 @@
 <template>
   <div class="pt-20 pb-32 px-6">
-    <h1 class="text-3xl font-black text-primary-900 mb-8">Purchase List</h1>
+    <h1 class="text-3xl font-black text-primary-900 mb-8">{{ t('history.title') }}</h1>
 
     <div v-if="purchases.length > 0" class="space-y-4">
       <div v-for="(group, month) in groupedPurchases" :key="month">
@@ -42,12 +42,13 @@
       <div class="mb-4 flex justify-center text-slate-200">
         <UIcon name="i-tabler-receipt-tax" class="w-16 h-16" />
       </div>
-      <p class="text-slate-400 text-sm">No transactions found yet.</p>
+      <p class="text-slate-400 text-sm">{{ t('history.noTransactions') }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
+    const { t } = useI18n()
     const { $api } = useNuxtApp();
     // useAsyncData is preferred over useFetch when using a custom fetcher
     const { data: purchases, refresh: refreshPurchases } = await useAsyncData('purchases', () => $api('/sales'))

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  const { t } = useI18n()
   const props = defineProps({
     id: {
       type: String,
@@ -67,7 +68,7 @@
         </del></span>
       </div>
       <div class="mt-2">
-        <button v-if="isLoggedIn" class="bg-primary-500 text-white px-4 py-2 rounded w-full" @click="handleBuyVoucher">Buy</button>
+        <button v-if="isLoggedIn" class="bg-primary-500 text-white px-4 py-2 rounded w-full" @click="handleBuyVoucher">{{ t('catalog.buy') }}</button>
       </div>
     </div>
   </UCard>

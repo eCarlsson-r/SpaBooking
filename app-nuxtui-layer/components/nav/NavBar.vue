@@ -1,5 +1,6 @@
 <script setup lang="ts">
   const {isMobileMenuOpen} = useMobileMenu();
+  const { t } = useI18n()
 
   // 1. Import your auth store
   const auth = useAuthStore();
@@ -34,7 +35,7 @@
         <ProfileActions class="hidden sm:flex" />
         <NavSecondary />
       </div>
-      <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">Sign In / Join Us</UButton>
+      <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">{{ t('nav.signIn') }}</UButton>
     </div>
     <USlideover
       v-model="isMobileMenuOpen"

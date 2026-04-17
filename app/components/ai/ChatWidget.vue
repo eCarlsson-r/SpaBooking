@@ -15,6 +15,7 @@ const { isLoggedIn } = storeToRefs(authStore)
 const chatStore = useChatStore()
 const { messages, isTyping } = storeToRefs(chatStore)
 
+const { t } = useI18n()
 const router = useRouter()
 
 const isOpen = ref(false)
@@ -87,7 +88,7 @@ const sendMessageWithNavigation = async () => {
       const { date, time, treatmentId, branchId } = chatResponse.params
       messages.value.push({
         role: 'assistant',
-        content: 'I found a booking option for you. Taking you to checkout now...',
+        content: t('ai.foundBookingOption'),
         timestamp: new Date().toISOString(),
       })
       await nextTick()
@@ -119,7 +120,7 @@ const sendMessageWithNavigation = async () => {
   } catch {
     messages.value.push({
       role: 'assistant',
-      content: 'The assistant is temporarily unavailable. Please use the manual booking flow.',
+      content: t('ai.assistantUnavailable'),
       timestamp: new Date().toISOString(),
     })
     showFallback.value = true
@@ -166,11 +167,11 @@ const handleKeydownSend = (e: KeyboardEvent) => {
           <div class="flex items-center justify-between px-4 py-3 bg-primary-600 text-white">
             <div class="flex items-center gap-2">
               <UIcon name="i-mdi-sparkles" class="w-5 h-5" />
-              <span class="font-bold text-sm">Booking Assistant</span>
+              <span class="font-bold text-sm">{{ t('ai.bookingAssistant') }}</span>
             </div>
             <button
               class="hover:opacity-75 transition-opacity"
-              aria-label="Close chat"
+              :aria-label="t('ai.bookingAssistant')"
               @click="isOpen = false"
             >
               <UIcon name="i-material-symbols-close" class="w-5 h-5" />
@@ -186,7 +187,7 @@ const handleKeydownSend = (e: KeyboardEvent) => {
             <!-- Empty state -->
             <div v-if="messages.length === 0" class="text-center text-slate-400 text-sm py-8">
               <UIcon name="i-mdi-chat-outline" class="w-8 h-8 mx-auto mb-2 opacity-50" />
-              <p>Hi! How can I help you book a treatment today?</p>
+              <p>{{ t('ai.chatEmptyState') }}</p>
             </div>
 
             <!-- Message bubbles -->
@@ -221,14 +222,14 @@ const handleKeydownSend = (e: KeyboardEvent) => {
             <!-- Service unavailability fallback -->
             <div v-if="showFallback && !isTyping" class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-xl p-3 text-sm">
               <p class="text-amber-800 dark:text-amber-200 mb-1">
-                The assistant is temporarily unavailable.
+                {{ t('ai.assistantUnavailable') }}
               </p>
               <NuxtLink
                 to="/bookings"
                 class="text-primary-600 dark:text-primary-400 font-bold underline"
                 @click="isOpen = false"
               >
-                Go to manual booking →
+                {{ t('ai.goToManualBooking') }}
               </NuxtLink>
             </div>
           </div>
@@ -238,7 +239,7 @@ const handleKeydownSend = (e: KeyboardEvent) => {
             <textarea
               v-model="inputText"
               rows="1"
-              placeholder="Type your message..."
+              :placeholder="t('ai.chatPlaceholder')"
               class="flex-1 resize-none rounded-xl border border-slate-200 dark:border-neutral-600 bg-slate-50 dark:bg-neutral-800 text-slate-800 dark:text-slate-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 placeholder-slate-400"
               style="max-height: 80px;"
               :disabled="isTyping"
@@ -247,7 +248,7 @@ const handleKeydownSend = (e: KeyboardEvent) => {
             <button
               :disabled="!inputText.trim() || isTyping"
               class="shrink-0 w-9 h-9 rounded-xl bg-primary-600 text-white flex items-center justify-center hover:bg-primary-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-              aria-label="Send message"
+              :aria-label="t('ai.bookingAssistant')"
               @click="handleSend"
             >
               <UIcon name="i-material-symbols-send-rounded" class="w-4 h-4" />
@@ -259,7 +260,7 @@ const handleKeydownSend = (e: KeyboardEvent) => {
       <!-- Floating toggle button -->
       <button
         class="w-14 h-14 rounded-full bg-primary-600 text-white shadow-lg hover:bg-primary-700 active:scale-95 transition-all flex items-center justify-center"
-        aria-label="Toggle chat assistant"
+        :aria-label="t('ai.bookingAssistant')"
         @click="toggleWidget"
       >
         <UIcon

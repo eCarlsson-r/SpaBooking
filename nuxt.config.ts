@@ -344,8 +344,8 @@ export default defineNuxtConfig({
     },
     workbox: {
       additionalManifestEntries: [
-        { url: '/i18n/locales/en.json', revision: null },
-        { url: '/i18n/locales/id.json', revision: null },
+        { url: '/locales/en.json', revision: null },
+        { url: '/locales/id.json', revision: null },
       ],
       runtimeCaching: [
         {
@@ -375,7 +375,7 @@ export default defineNuxtConfig({
       { code: 'id', name: 'Bahasa Indonesia', file: 'id.json' },
     ],
     defaultLocale: 'en',
-    langDir: 'i18n/locales/',
+    langDir: '../app/i18n/locales/',
     strategy: 'prefix',
     detectBrowserLanguage: {
       useCookie: true,

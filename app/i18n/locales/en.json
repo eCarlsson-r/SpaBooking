@@ -15,7 +15,7 @@
     "signIn": "Sign In",
     "signInSubtitle": "Please enter your email and password to sign in.",
     "email": "Email",
-    "emailPlaceholder": "name@email.com",
+    "emailPlaceholder": "name{'@'}email.com",
     "password": "Password",
     "noAccount": "Don't have an account?",
     "registerNow": "Register Now"
@@ -233,5 +233,15 @@
     "passwordMismatch": "Passwords do not match.",
     "minLength": "Must be at least {min} characters.",
     "maxLength": "Must be at most {max} characters."
+  },
+  "treatments": {
+    "title": "Our Treatment Categories",
+    "bookNow": "Book Now"
+  },
+  "error": {
+    "pageNotFound": "This page could not be found",
+    "brokenLink": "Looks like you've followed a broken link or entered a URL that doesn't exist on this site.",
+    "genericError": "An error occurred",
+    "goBack": "Go Back"
   }
 }

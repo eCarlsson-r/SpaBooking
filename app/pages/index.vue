@@ -2,6 +2,7 @@
   // 1. Import your auth store
   import type { Category } from '~~/types/store'
 
+  const { t } = useI18n()
   const auth = useAuthStore();
 
   // 2. (Optional but recommended) If you need to keep properties reactive 
@@ -11,9 +12,6 @@
   const bookingStore = useBookingStore();
 
   definePageMeta({
-    // layout: 'default',
-    // name: 'index',
-    // alias: 'index',
     title: 'Home',
     description: 'Explore our relaxing treatments and book your next session.',
     navOrder: 1,
@@ -42,18 +40,18 @@
     <div v-if="isLoggedIn" class="appointment-form p-4 bg-slate-50 dark:bg-slate-950 rounded-xl shadow-lg -mt-10 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="cursor-pointer border p-3 rounded-lg flex justify-between" @click="bookingStore.openWithStep('date')">
-          <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.session_date || 'Select date' }}</span>
+          <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.session_date || t('booking.selectDatePlaceholder') }}</span>
           <UIcon name="i-mdi-calendar" class="w-5 h-5" />
         </div>
 
         <div class="cursor-pointer border p-3 rounded-lg flex justify-between" @click="bookingStore.openWithStep('treatment')">
-          <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.treatment?.name || 'Select treatment' }}</span>
+          <span class="text-slate-500 dark:text-slate-50">{{ bookingStore.selection.treatment?.name || t('booking.selectTreatmentPlaceholder') }}</span>
           <UIcon name="i-material-symbols-chevron-down-rounded" class="w-5 h-5" />
         </div>
       </div>
 
       <button class="lemon-btn w-full mt-4" @click="bookingStore.openWithStep('confirm')">
-        Book Now <UIcon name="i-material-symbols-chevron-right-rounded" class="w-5 h-5" />
+        {{ t('booking.bookNow') }} <UIcon name="i-material-symbols-chevron-right-rounded" class="w-5 h-5" />
       </button>
     </div>
     

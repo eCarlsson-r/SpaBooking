@@ -1,4 +1,5 @@
 <script setup>
+  const { t } = useI18n()
   const ui = useUIStore()
   const auth = useAuthStore()
   const bookingStore = useBookingStore()
@@ -29,27 +30,27 @@
   <UModal v-model="ui.isLoginModalOpen" :ui="{ container: 'items-center' }">
     <UCard class="sm:max-w-[400px] rounded-3xl p-8 bg-slate-50 dark:bg-slate-950">
       <template #header>
-        <h2 class="text-2xl font-black text-slate-800 dark:text-slate-50">Sign In</h2>
-        <p class="text-sm text-gray-500">Please enter your email and password to sign in.</p>
+        <h2 class="text-2xl font-black text-slate-800 dark:text-slate-50">{{ t('auth.signIn') }}</h2>
+        <p class="text-sm text-gray-500">{{ t('auth.signInSubtitle') }}</p>
       </template>
 
       <div class="space-y-4">
         <div class="space-y-2">
-          <label class="text-sm font-medium">Email</label>
-          <UInput v-model="credentials.username" type="email" placeholder="nama@email.com" />
+          <label class="text-sm font-medium">{{ t('auth.email') }}</label>
+          <UInput v-model="credentials.username" type="email" :placeholder="t('auth.emailPlaceholder')" />
         </div>
         <div class="space-y-2">
-          <label class="text-sm font-medium">Password</label>
+          <label class="text-sm font-medium">{{ t('auth.password') }}</label>
           <UInput v-model="credentials.password" type="password" />
         </div>
       </div>
 
       <template #footer>
         <div class="flex flex-col gap-3">
-          <UButton class="w-full h-12" color="primary" @click="handleLogin">Sign In</UButton>
+          <UButton class="w-full h-12" color="primary" @click="handleLogin">{{ t('auth.signIn') }}</UButton>
           <p class="text-sm text-center">
-            Don't have an account?
-            <NuxtLink to="/register" class="text-blue-600 font-bold" @click="ui.closeLogin">Register Now</NuxtLink>
+            {{ t('auth.noAccount') }}
+            <NuxtLink to="/register" class="text-blue-600 font-bold" @click="ui.closeLogin">{{ t('auth.registerNow') }}</NuxtLink>
           </p>
         </div>
       </template>

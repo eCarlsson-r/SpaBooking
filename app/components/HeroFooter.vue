@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import type { Category } from '~~/types/store'
+  const { t } = useI18n()
   const props = defineProps({
     categories: {
       type: Array as PropType<Category[]>,
@@ -13,20 +14,20 @@
 
     <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto text-white">
       <div>
-        <h4 class="text-xs italic text-lime-300">Brief description about us</h4>
-        <h3 class="text-xl font-bold mb-4 uppercase">About Us</h3>
-        <p class="text-sm opacity-80">Spa Premier WebApp provides luxury Balinese treatments designed for your ultimate relaxation.</p>
+        <h4 class="text-xs italic text-lime-300">{{ t('hero.aboutUsSubtitle') }}</h4>
+        <h3 class="text-xl font-bold mb-4 uppercase">{{ t('hero.aboutUs') }}</h3>
+        <p class="text-sm opacity-80">{{ t('hero.aboutUsDescription') }}</p>
       </div>
 
       <div>
-        <h4 class="text-xs italic text-lime-300">Our operational schedule</h4>
-        <h3 class="text-xl font-bold mb-4 uppercase">Operational Hours</h3>
-        <p class="text-sm">Monday - Sunday: <span class="text-lime-300">09:00 - 18:00</span></p>
+        <h4 class="text-xs italic text-lime-300">{{ t('hero.operationalHoursSubtitle') }}</h4>
+        <h3 class="text-xl font-bold mb-4 uppercase">{{ t('hero.operationalHours') }}</h3>
+        <p class="text-sm">{{ t('hero.operationalHoursValue') }}</p>
       </div>
 
       <div>
-        <h4 class="text-xs italic text-lime-300">We are providing</h4>
-        <h3 class="text-xl font-bold mb-4 uppercase">Services</h3>
+        <h4 class="text-xs italic text-lime-300">{{ t('hero.servicesSubtitle') }}</h4>
+        <h3 class="text-xl font-bold mb-4 uppercase">{{ t('hero.services') }}</h3>
         <ul class="text-sm space-y-2">
           <li v-for="cat in props.categories" :key="cat.id" class="hover:text-lime-300 cursor-pointer">
             <a :href="`/treatments/${cat.id}`">▶ {{ cat.name }}</a>

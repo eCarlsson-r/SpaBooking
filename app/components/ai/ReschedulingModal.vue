@@ -17,6 +17,7 @@ const emit = defineEmits<{
   rescheduled: [conflictId: number, slot: AlternativeSlot]
 }>()
 
+const { t } = useI18n()
 const { $api } = useNuxtApp()
 
 const isSubmitting = ref(false)
@@ -28,9 +29,9 @@ const error = ref<string | null>(null)
 
 const conflictReasonLabel = computed(() => {
   if (props.conflict.conflictType === 'therapist') {
-    return 'Therapist double-booking'
+    return t('ai.therapistDoubleBooking')
   }
-  return 'Room double-booking'
+  return t('ai.roomDoubleBooking')
 })
 
 const conflictDescription = computed(() => {
@@ -77,7 +78,7 @@ const selectSlot = async (slot: AlternativeSlot) => {
     confirmedSlot.value = slot
     emit('rescheduled', props.conflict.id, slot)
   } catch {
-    error.value = 'Failed to reschedule. Please try again or contact support.'
+    error.value = t('ai.rescheduleError')
   } finally {
     isSubmitting.value = false
   }
@@ -116,12 +117,12 @@ const dismiss = async () => {
         <div class="flex items-center gap-2">
           <UIcon name="i-material-symbols-warning-rounded" class="w-5 h-5 shrink-0" />
           <span id="rescheduling-modal-title" class="font-bold text-sm">
-            Scheduling Conflict Detected
+            {{ t('ai.schedulingConflict') }}
           </span>
         </div>
         <button
           class="hover:opacity-75 transition-opacity"
-          aria-label="Dismiss notification"
+          :aria-label="t('ai.dismissSuggestion')"
           :disabled="isDismissing || isSubmitting"
           @click="dismiss"
         >
@@ -133,21 +134,20 @@ const dismiss = async () => {
       <div v-if="confirmedSlot" class="px-5 py-6 text-center">
         <UIcon name="i-material-symbols-check-circle-rounded" class="w-12 h-12 text-green-500 mx-auto mb-3" />
         <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base mb-1">
-          Booking Rescheduled
+          {{ t('ai.bookingRescheduled') }}
         </h3>
         <p class="text-sm text-slate-500 dark:text-slate-400">
-          Your booking has been moved to
-          <strong>{{ formatDate(confirmedSlot.date) }}</strong>
-          from
-          <strong>{{ formatTime(confirmedSlot.startTime) }}</strong>
-          to
-          <strong>{{ formatTime(confirmedSlot.endTime) }}</strong>.
+          {{ t('ai.bookingRescheduledDescription', {
+            date: formatDate(confirmedSlot.date),
+            startTime: formatTime(confirmedSlot.startTime),
+            endTime: formatTime(confirmedSlot.endTime)
+          }) }}
         </p>
         <button
           class="mt-4 px-5 py-2 rounded-xl bg-primary-600 text-white text-sm font-bold hover:bg-primary-700 transition-colors"
           @click="emit('dismissed', props.conflict.id)"
         >
-          Done
+          {{ t('ai.done') }}
         </button>
       </div>
 
@@ -175,7 +175,7 @@ const dismiss = async () => {
         <!-- Alternative slots (Req 7.2) -->
         <div>
           <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
-            Available Alternative Slots
+            {{ t('ai.availableAlternativeSlots') }}
           </p>
 
           <!-- No slots available -->
@@ -183,7 +183,7 @@ const dismiss = async () => {
             v-if="conflict.alternativeSlots.length === 0"
             class="text-sm text-slate-500 dark:text-slate-400 text-center py-4"
           >
-            No alternative slots are currently available. Please contact the spa directly.
+            {{ t('ai.noAlternativeSlots') }}
           </div>
 
           <!-- Slot list (Req 7.3) -->
@@ -204,7 +204,7 @@ const dismiss = async () => {
                 </p>
               </div>
               <div class="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
-                <span>Room {{ slot.roomId }}</span>
+                <span>{{ t('ai.room', { id: slot.roomId }) }}</span>
                 <UIcon
                   v-if="isSubmitting"
                   name="i-mdi-loading"
@@ -227,8 +227,8 @@ const dismiss = async () => {
             :disabled="isDismissing || isSubmitting"
             @click="dismiss"
           >
-            <span v-if="isDismissing">Dismissing…</span>
-            <span v-else>Dismiss suggestion</span>
+            <span v-if="isDismissing">{{ t('ai.dismissing') }}</span>
+            <span v-else>{{ t('ai.dismissSuggestion') }}</span>
           </button>
         </div>
 

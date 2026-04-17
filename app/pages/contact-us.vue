@@ -1,4 +1,5 @@
 <script setup>
+  const { t } = useI18n()
   const { $api } = useNuxtApp();
   const { isLoggedIn } = useAuthStore();
   // useAsyncData is preferred over useFetch when using a custom fetcher
@@ -23,9 +24,6 @@
   }, { immediate: true })
 
   definePageMeta({
-    // layout: 'default',
-    // name: 'index',
-    // alias: 'index',
     title: 'Contact Us',
     description: 'Get to know our branches and how to contact us.',
     navOrder: 5,
@@ -50,10 +48,10 @@
           <p class="text-sm text-slate-500 mb-3 dark:text-slate-400">{{ branch.address }}</p>
           
           <div class="grid grid-cols-2 gap-2">
-            <UButton size="sm" class="bg-green-500 hover:bg-green-600 text-white" @click.stop="openWhatsApp(branch)">WhatsApp</UButton>
-            <UButton size="sm" variant="outline" @click.stop="callBranch(branch.phone)">Call</UButton>
+            <UButton size="sm" class="bg-green-500 hover:bg-green-600 text-white" @click.stop="openWhatsApp(branch)">{{ t('contact.whatsapp') }}</UButton>
+            <UButton size="sm" variant="outline" @click.stop="callBranch(branch.phone)">{{ t('contact.call') }}</UButton>
             <UButton v-if="isLoggedIn" size="sm" class="col-span-2 bg-primary-500 hover:bg-primary-600 text-white" @click="bookThisBranch(branch)">
-              Book at this Branch
+              {{ t('contact.bookAtBranch') }}
             </UButton>
           </div>
         </div>
@@ -65,7 +63,7 @@
     </div>
 
     <div class="md:sticky md:top-24 h-fit">
-      <h2 class="text-sm font-bold text-slate-400 mb-2 uppercase tracking-widest">Lokasi Cabang</h2>
+      <h2 class="text-sm font-bold text-slate-400 mb-2 uppercase tracking-widest">{{ t('contact.branchLocation') }}</h2>
       <div v-if="selectedBranch" class="w-full h-[400px] rounded-3xl overflow-hidden border shadow-sm">
         <iframe
           width="100%"
@@ -79,7 +77,7 @@
       </div>
       
       <div v-else class="h-[400px] bg-slate-100 rounded-3xl animate-pulse flex items-center justify-center">
-        <p class="text-slate-400">Pilih cabang untuk melihat peta</p>
+        <p class="text-slate-400">{{ t('contact.selectBranchForMap') }}</p>
       </div>
     </div>
   </div>

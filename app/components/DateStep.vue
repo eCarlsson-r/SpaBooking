@@ -2,6 +2,7 @@
 import { format, addDays, isSameDay, parse, addMinutes, isBefore } from 'date-fns'
 import { id } from 'date-fns/locale'
 
+const { t } = useI18n()
 const bookingStore = useBookingStore()
 
 // 1. Generate 14 days for the scroller
@@ -36,7 +37,7 @@ const selectTime = (time) => {
 <template>
   <div class="space-y-6">
     <div>
-      <h3 class="text-xs font-bold text-slate-400 uppercase mb-3">Pilih Tanggal</h3>
+      <h3 class="text-xs font-bold text-slate-400 uppercase mb-3">{{ t('booking.selectDate') }}</h3>
       <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
         <button 
           v-for="day in days" :key="day.toString()"
@@ -55,7 +56,7 @@ const selectTime = (time) => {
     </div>
 
     <div v-if="bookingStore.selection.session_date">
-      <h3 class="text-xs font-bold text-slate-400 uppercase mb-3 text-center">Pilih Jam Kedatangan</h3>
+      <h3 class="text-xs font-bold text-slate-400 uppercase mb-3 text-center">{{ t('booking.selectTime') }}</h3>
       <div class="grid grid-cols-4 gap-2">
         <button 
           v-for="time in timeSlots" :key="time"

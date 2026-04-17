@@ -1,6 +1,6 @@
 <template>
   <div class="p-8">
-    <h1 class="text-3xl font-bold mb-6">Our Treatment Vouchers</h1>
+    <h1 class="text-3xl font-bold mb-6">{{ t('catalog.title') }}</h1>
 
     <!-- AI Recommendations for logged-in customers -->
     <AiRecommendationPanel
@@ -25,6 +25,7 @@
 </template>
 
 <script setup>
+  const { t } = useI18n()
   const { $api } = useNuxtApp();
   // useAsyncData is preferred over useFetch when using a custom fetcher
   const { data: treatments, refresh: refreshTreatments } = await useAsyncData('treatment', () => $api('/treatment?vouchers=true'))
@@ -35,9 +36,6 @@
   })
 
   definePageMeta({
-    // layout: 'default',
-    // name: 'index',
-    // alias: 'index',
     title: 'Voucher Catalog',
     description: 'Explore and purchase vouchers for more economic treatments.',
     navOrder: 2,

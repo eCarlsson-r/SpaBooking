@@ -1,4 +1,5 @@
 <script setup>
+  const { t } = useI18n()
   const toast = useToast()
   const props = defineProps(['item']);
   const emit = defineEmits(['update-qty', 'remove']);
@@ -14,8 +15,8 @@
         emit('update-qty', props.item.voucher_normal_quantity);
       } else {
         toast.add({
-          title: "Error",
-          description: "Maximum purchase is 5 sets of voucher.",
+          title: t('booking.error'),
+          description: t('cart.maxVoucherError'),
           color: 'red',
         })
       }
@@ -29,8 +30,8 @@
         emit('update-qty', -props.item.voucher_normal_quantity);
       } else {
         toast.add({
-          title: "Error",
-          description: "Need to purchase at least 1 set of voucher.",
+          title: t('booking.error'),
+          description: t('cart.minVoucherError'),
           color: 'red',
         })
       }
@@ -47,19 +48,19 @@
       />
       <div>
         <span class="text-[10px] font-bold uppercase px-2 py-1 rounded bg-slate-100 text-slate-500 italic">
-          {{ item.session_type === 'voucher' ? 'Voucher Purchase' : 'Session Order' }}
+          {{ item.session_type === 'voucher' ? t('cart.voucherPurchase') : t('cart.sessionOrder') }}
         </span>
         
         <h4 class="text-lg font-bold text-slate-800 mt-1">{{ item.treatment.name }}</h4>
         
         <div v-if="item.session_type === 'voucher'" class="text-xs text-slate-400 mt-1">
-          Voucher without expiry
+          {{ t('cart.voucherNoExpiry') }}
         </div>
         <div v-else class="text-xs text-slate-500 mt-2 space-y-1">
-          <p><strong>Date : </strong> {{ item.session_date }}</p>
-          <p><strong>Time : </strong> {{ item.session_time }}</p>
-          <p><strong>Therapist : </strong> {{ item.employee.name }}</p>
-          <p><strong>Room : </strong> {{ item.room.name }}</p>
+          <p><strong>{{ t('cart.date') }} : </strong> {{ item.session_date }}</p>
+          <p><strong>{{ t('cart.time') }} : </strong> {{ item.session_time }}</p>
+          <p><strong>{{ t('cart.therapist') }} : </strong> {{ item.employee.name }}</p>
+          <p><strong>{{ t('cart.room') }} : </strong> {{ item.room.name }}</p>
         </div>
       </div>
     </div>
@@ -81,7 +82,7 @@
     </div>
 
     <div class="w-32 text-right">
-      <p class="text-xs text-slate-400">Subtotal</p>
+      <p class="text-xs text-slate-400">{{ t('cart.subtotal') }}</p>
       <p class="font-black text-primary-900 text-lg">
         {{ formattedPrice(item.session_type === 'voucher' ? (item.price * (item.quantity/item.voucher_normal_quantity) * item.voucher_purchase_quantity) : item.price * item.quantity) }}
       </p>

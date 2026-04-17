@@ -1,4 +1,5 @@
 <script setup>
+const { t } = useI18n()
 const bookingStore = useBookingStore()
 const { $api } = useNuxtApp()
 
@@ -27,7 +28,7 @@ const selectRoom = (room) => {
 
 <template>
   <div class="space-y-4">
-    <h3 class="text-sm font-bold text-slate-500 uppercase">Pilih Kamar / Bed</h3>
+    <h3 class="text-sm font-bold text-slate-500 uppercase">{{ t('booking.selectRoom') }}</h3>
     
     <div v-if="pending" class="grid grid-cols-3 gap-2 animate-pulse">
        <div v-for="i in 6" :key="i" class="h-12 bg-slate-100 rounded-lg"/>
