@@ -19,7 +19,7 @@ export type Treatment = {
 export type Treatments = Treatment[]
 
 export type Category = {
-  id: string
+  id: number
   name: string
   description: string
   header_img: string

@@ -7,7 +7,7 @@
       default: () => []
     }
   })
-  const selectedCategory = ref('B')
+  const selectedCategory = ref(1)
   const currentCategoryData = computed(() => {
     return props.categories?.find((c: Category) => c.id === selectedCategory.value) ?? null;
   })

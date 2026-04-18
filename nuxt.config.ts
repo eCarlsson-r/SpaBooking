@@ -344,8 +344,8 @@ export default defineNuxtConfig({
     },
     workbox: {
       additionalManifestEntries: [
-        { url: '/locales/en.json', revision: null },
-        { url: '/locales/id.json', revision: null },
+        { url: '/i18n/locales/en.json', revision: null },
+        { url: '/i18n/locales/id.json', revision: null },
       ],
       runtimeCaching: [
         {

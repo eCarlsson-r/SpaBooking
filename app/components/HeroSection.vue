@@ -22,29 +22,29 @@ const localePath = useLocalePath()
       indicators
       arrows
     >
-      <div class="relative w-full aspect-square sm:aspect-[2/1] md:aspect-[3/1]">
+      <div class="relative w-full h-[calc(100dvh-72px)] sm:h-auto sm:aspect-[2/1] md:aspect-[3/1]">
         <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
           
-          <div class="px-6 sm:px-8 md:px-16 w-full text-center sm:text-left text-white space-y-2 sm:space-y-4">
+          <div class="px-6 sm:px-8 md:px-16 w-full text-center sm:text-left text-white space-y-4 sm:space-y-4">
             <h4 class="text-sm sm:text-base md:text-xl font-medium text-lime-400">
               {{ item.introduction }}
             </h4>
-            <h2 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
               {{ item.title }}
             </h2>
             <h3 class="text-xl sm:text-3xl md:text-4xl font-semibold opacity-90">
               {{ item.subtitle }}
             </h3>
-            <p class="hidden sm:block text-lg text-gray-200 line-clamp-2 max-w-xl">
+            <p class="text-lg text-gray-200 line-clamp-3 sm:line-clamp-2 max-w-xl">
               {{ item.description }}
             </p>
-            <div class="pt-2 sm:pt-4">
+            <div class="pt-4 sm:pt-4">
               <UButton
                 :to="localePath(item.action_page)"
                 size="xl"
                 color="primary"
-                class="px-6 sm:px-8 font-bold shadow-lg transition-transform hover:scale-105"
+                class="px-8 sm:px-8 font-bold shadow-lg transition-transform hover:scale-105"
               >
                 {{ item.action }}
               </UButton>
