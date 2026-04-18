@@ -328,7 +328,7 @@ export default defineNuxtConfig({
   },
 
   pwa: {
-    registerType: 'autoUpdate',
+    registerType: 'prompt',
     manifest: {
       name: 'Carlsson Spa Booking',
       short_name: 'SpaBooking',

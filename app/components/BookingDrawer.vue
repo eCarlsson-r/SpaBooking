@@ -32,7 +32,7 @@
             @click="goToStep(steps[steps.indexOf(bookingStore.currentStep)-1])">
             <UIcon name="i-material-symbols-chevron-left-rounded" class="w-5 h-5 text-slate-500" />
            </button>
-           <span class="font-bold capitalize">{{ bookingStore.currentStep }}</span>
+           <span class="font-bold capitalize">{{ $t('booking.steps.' + bookingStore.currentStep) }}</span>
            <button @click="bookingStore.isOpen = false">
             <UIcon name="i-material-symbols-close" class="w-5 h-5 text-slate-300" />
            </button>

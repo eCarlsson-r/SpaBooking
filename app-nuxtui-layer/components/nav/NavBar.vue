@@ -31,11 +31,14 @@
       >
         <NavPrimary class="sm:w-full" />
       </div>
-      <div v-if="isLoggedIn" data-pg-name="Profile" class="flex space-x-1">
-        <ProfileActions class="hidden sm:flex" />
-        <NavSecondary />
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <LanguageSwitcher />
+        <div v-if="isLoggedIn" data-pg-name="Profile" class="flex space-x-1 items-center">
+          <ProfileActions class="hidden sm:flex" />
+          <NavSecondary />
+        </div>
+        <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">{{ t('nav.signIn') }}</UButton>
       </div>
-      <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">{{ t('nav.signIn') }}</UButton>
     </div>
     <USlideover
       v-model="isMobileMenuOpen"

@@ -36,7 +36,7 @@ const handleTreatmentSelect = (treatment) => {
         >
           <div class="text-left">
             <p class="font-bold text-slate-800">{{ treatment.name }}</p>
-            <p class="text-xs text-slate-500">{{ treatment.duration }} mins</p>
+            <p class="text-xs text-slate-500">{{ treatment.duration }} {{ $t('booking.mins') }}</p>
           </div>
           <p class="font-bold text-primary-900">{{ formatIDR(treatment.price) }}</p>
         </button>
