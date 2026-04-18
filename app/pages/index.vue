@@ -20,11 +20,9 @@
   })
 
   const { $api } = useNuxtApp();
-
-  const config = useRuntimeConfig()
   const { data: categories, refresh: refreshCategories } = await useAsyncData<Category[]>(
     'category',
-    () => $fetch(`${config.public.apiBase}/category`),
+    () => $api('/category'),
     { default: (): Category[] => [] }
   )
 

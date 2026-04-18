@@ -1,9 +1,8 @@
 <script setup lang="ts">
 const { $api } = useNuxtApp();
-const config = useRuntimeConfig()
 const { data: banners, error } = await useAsyncData<any[]>(
   'banner',
-  () => $api(`${config.public.apiBase}/banner`),
+  () => $api('/banner'),
   { default: () => [] }
 )
 
@@ -22,7 +21,7 @@ const localePath = useLocalePath()
       indicators
       arrows
     >
-      <div class="relative w-full h-[calc(100dvh-72px)] sm:h-auto sm:aspect-[2/1] md:aspect-[3/1]">
+      <div class="relative w-full h-[calc(100dvh-72px)] sm:h-auto sm:aspect-[2/1] md:aspect-[5/2]">
         <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
           

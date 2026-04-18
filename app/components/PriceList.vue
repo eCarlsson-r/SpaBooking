@@ -7,30 +7,37 @@
       default: () => []
     }
   })
-  const selectedCategory = ref(1)
+  const selectedCategory = ref(props.categories?.[0]?.id || 1)
   const currentCategoryData = computed(() => {
-    return props.categories?.find((c: Category) => c.id === selectedCategory.value) ?? null;
+    return props.categories?.find((c: Category) => c.id === selectedCategory.value) ?? props.categories?.[0] ?? null;
   })
+
+  watch(() => props.categories, (newCats) => {
+    if (newCats?.length > 0 && !newCats.find(c => c.id === selectedCategory.value)) {
+      selectedCategory.value = newCats[0].id
+    }
+  }, { immediate: true })
+
   const { isLoggedIn } = useAuthStore();
 </script>
 <template>
   <div v-if="currentCategoryData" class="flex flex-col min-h-[500px] overflow-hidden bg-white shadow-xl">
-    <!-- Category Selection -->
-    <div class="w-full bg-yellow-900 flex sm:flex-col overflow-x-auto sm:overflow-x-visible no-scrollbar sm:w-16 md:w-20">
-      <button 
-        v-for="cat in categories" 
-        :key="cat.id"
-        class="relative flex-shrink-0 h-16 sm:h-32 px-6 sm:px-0 flex items-center justify-center transition-colors border-b-2 sm:border-b-0 sm:border-r-2"
-        :class="selectedCategory === cat.id ? 'bg-yellow-800 text-lime-300 border-lime-300' : 'text-white border-transparent hover:bg-yellow-800'"
-        @click="selectedCategory = cat.id"
-      >
-        <span class="sm:rotate-[-90deg] whitespace-nowrap text-sm font-bold uppercase tracking-widest">
-          {{ cat.name }}
-        </span>
-      </button>
-    </div>
-
     <div class="flex-1 flex flex-col md:flex-row">
+      <!-- Category Selection -->
+      <div class="w-full bg-yellow-900 flex sm:flex-col overflow-x-auto sm:overflow-x-visible no-scrollbar sm:w-16 md:w-20">
+        <button 
+          v-for="cat in categories" 
+          :key="cat.id"
+          class="relative flex-shrink-0 h-16 sm:h-32 px-6 sm:px-0 flex items-center justify-center transition-colors border-b-2 sm:border-b-0 sm:border-r-2"
+          :class="selectedCategory === cat.id ? 'bg-yellow-800 text-lime-300 border-lime-300' : 'text-white border-transparent hover:bg-yellow-800'"
+          @click="selectedCategory = cat.id"
+        >
+          <span class="sm:rotate-[-90deg] whitespace-nowrap text-sm font-bold uppercase tracking-widest">
+            {{ cat.name }}
+          </span>
+        </button>
+      </div>
+
       <!-- Image only on Desktop -->
       <div class="hidden md:block w-1/2 relative overflow-hidden">
         <img 

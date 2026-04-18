@@ -24,7 +24,7 @@
       </div>
 
       <div class="flex items-center space-x-2 sm:space-x-4">
-        <LayoutLanguageSwitcher />
+        <LayoutLanguageSwitcher class="hidden sm:flex" />
         <div v-if="isLoggedIn" class="flex space-x-1 items-center">
           <ProfileActions class="hidden sm:flex" />
           <NavSecondary />
@@ -41,6 +41,7 @@
       <div class="p-4 flex flex-col h-full bg-white dark:bg-neutral-900">
         <div class="flex justify-between items-center mb-8">
           <TheLogo />
+          <LayoutLanguageSwitcher />
           <UButton
             color="gray"
             variant="ghost"
