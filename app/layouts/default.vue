@@ -22,19 +22,19 @@
   <div>
     <!-- <div class="container mx-auto"> -->
     <div
-      class="min-h-screen pb-50 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
+      class="min-h-screen flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
     >
       <NavBar class="z-50" />
-      <main>
+      <main class="flex-grow pb-20 sm:pb-0">
         <slot />
         <UNotifications />
         <BookingDrawer />
       </main>
       <LoginModal />
       <AiChatWidget />
-      <TheFooter class="fixed bottom-0 w-full z-50" />
-      <OfflineIndicator />
-      <SyncNotification />
+      <TheFooter class="w-full z-50 sm:fixed sm:bottom-0" />
+      <PwaOfflineIndicator />
+      <PwaSyncNotification />
     </div>
     <!-- </div> -->
   </div>

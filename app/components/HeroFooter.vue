@@ -7,6 +7,7 @@
       required: true
     }
   });
+  const localePath = useLocalePath()
 </script>
 <template>
   <div class="relative py-12 px-6 md:px-12 bg-cover bg-center" style="background-image: url('/footer.webp');">
@@ -30,7 +31,7 @@
         <h3 class="text-xl font-bold mb-4 uppercase">{{ t('hero.services') }}</h3>
         <ul class="text-sm space-y-2">
           <li v-for="cat in props.categories" :key="cat.id" class="hover:text-lime-300 cursor-pointer">
-            <a :href="`/treatments/${cat.id}`">▶ {{ cat.name }}</a>
+            <NuxtLink :to="localePath('/treatments/' + cat.id)">▶ {{ cat.name }}</NuxtLink>
           </li>
         </ul>
       </div>

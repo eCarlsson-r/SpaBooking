@@ -12,68 +12,46 @@
   const ui = useUIStore();
 </script>
 <template>
-  <nav class="container mx-auto">
+  <nav class="container mx-auto px-4">
     <div class="flex h-full items-center justify-between py-4">
-      <div style="grid-area: logo" class="flex justify-center">
+      <div class="flex items-center space-x-4">
+        <NavHamburger class="sm:hidden" @click="isMobileMenuOpen = true" />
         <TheLogo />
       </div>
-      <div
-        data-pg-name="Hamburger"
-        style="grid-area: hamburger"
-        class="sm:hidden"
-      >
-        <NavHamburger @click="isMobileMenuOpen = true" />
+
+      <div class="hidden sm:flex flex-1 justify-center mx-8">
+        <NavPrimary />
       </div>
-      <div
-        data-pg-name="NavBarPrimary"
-        style="grid-area: primary-nav"
-        class="hidden sm:flex"
-      >
-        <NavPrimary class="sm:w-full" />
-      </div>
+
       <div class="flex items-center space-x-2 sm:space-x-4">
-        <LanguageSwitcher />
-        <div v-if="isLoggedIn" data-pg-name="Profile" class="flex space-x-1 items-center">
+        <LayoutLanguageSwitcher />
+        <div v-if="isLoggedIn" class="flex space-x-1 items-center">
           <ProfileActions class="hidden sm:flex" />
           <NavSecondary />
         </div>
         <UButton v-else class="font-bold my-4 sm:my-2" @click="ui.openLogin">{{ t('nav.signIn') }}</UButton>
       </div>
     </div>
+    
     <USlideover
       v-model="isMobileMenuOpen"
-      data-pg-name="NavBarSecondary"
-      style="grid-area: primary-nav"
       class="w-80 sm:hidden"
       side="left"
     >
-      <NavPrimary class="m-4" />
+      <div class="p-4 flex flex-col h-full bg-white dark:bg-neutral-900">
+        <div class="flex justify-between items-center mb-8">
+          <TheLogo />
+          <UButton
+            color="gray"
+            variant="ghost"
+            icon="i-material-symbols-close"
+            @click="isMobileMenuOpen = false"
+          />
+        </div>
+        <NavPrimary />
+      </div>
     </USlideover>
   </nav>
 </template>
 <style scoped>
-  .navbar-grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
-    grid-template-areas: 'hamburger logo profile' 'search search search';
-    gap: 20px;
-  }
-  @media (min-width: 640px) {
-    .navbar-grid {
-      display: grid;
-      grid-template-columns: auto auto auto;
-      grid-template-rows: auto auto;
-      grid-template-areas: 'logo search profile' 'primary-nav primary-nav primary-nav';
-      gap: 20px;
-    }
-  }
-  @media (min-width: 1280px) {
-    .navbar-grid {
-      display: grid;
-      grid-template-columns: auto auto auto auto;
-      grid-template-rows: auto;
-      grid-template-areas: 'logo primary-nav search profile';
-    }
-  }
 </style>

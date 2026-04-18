@@ -10,6 +10,7 @@ const { data: banners, error } = await useAsyncData<any[]>(
 if (error.value) {
   // Handle error (e.g., show a fallback banner)
 }
+const localePath = useLocalePath()
 </script>
 <template>
   <div class="relative w-full overflow-hidden shadow-lg group">
@@ -21,29 +22,29 @@ if (error.value) {
       indicators
       arrows
     >
-      <div class="relative w-full aspect-[2/1] md:aspect-[3/1]">
+      <div class="relative w-full aspect-square sm:aspect-[2/1] md:aspect-[3/1]">
         <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
-        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
           
-          <div class="px-8 md:px-16 w-full text-center text-white space-y-4">
-            <h3 class="text-2xl md:text-4xl font-bold tracking-tight">
+          <div class="px-6 sm:px-8 md:px-16 w-full text-center sm:text-left text-white space-y-2 sm:space-y-4">
+            <h4 class="text-sm sm:text-base md:text-xl font-medium text-lime-400">
               {{ item.introduction }}
-            </h3>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">
+            </h4>
+            <h2 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
               {{ item.title }}
             </h2>
-            <h3 class="text-2xl md:text-3xl font-bold tracking-tight">
+            <h3 class="text-xl sm:text-3xl md:text-4xl font-semibold opacity-90">
               {{ item.subtitle }}
             </h3>
-            <p class="text-lg text-gray-200 line-clamp-2">
+            <p class="hidden sm:block text-lg text-gray-200 line-clamp-2 max-w-xl">
               {{ item.description }}
             </p>
-            <div class="pt-4">
+            <div class="pt-2 sm:pt-4">
               <UButton
-                :to="item.action_page"
+                :to="localePath(item.action_page)"
                 size="xl"
                 color="primary"
-                class="px-8 font-semibold shadow-lg transition-transform hover:scale-105"
+                class="px-6 sm:px-8 font-bold shadow-lg transition-transform hover:scale-105"
               >
                 {{ item.action }}
               </UButton>

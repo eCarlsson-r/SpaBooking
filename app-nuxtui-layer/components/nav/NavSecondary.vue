@@ -3,11 +3,13 @@
   const { navsSecondary } = useNavMenu();
   const auth = useAuthStore()
 
+  const localePath = useLocalePath()
+
   const handleLogout = async () => {
     // Clear Auth State
     await auth.logout() 
     // Redirect to landing
-    navigateTo('/login')
+    navigateTo(localePath('/login'))
   }
 
   const dropdownItems = [
@@ -20,7 +22,7 @@
         slot: nav.to.replace(/^\//, '').replaceAll('/', '-'),
         label: nav.title,
         icon: nav.icon,
-        to: nav.to,
+        to: localePath(nav.to),
         activeClass: 'text-primary',
       })),
     ],

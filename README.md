@@ -13,18 +13,21 @@
 ### 🎨 Visual Excellence
 
 - **Pinegrow Powered**: Pixel-perfect designs crafted with the precision of a professional designer.
+- **Mobile-First Responsiveness**: Fully optimized for smartphones and tablets with a fluid, adaptive layout.
 - **Nuxt UI & UnoCSS**: A stunning, accessible, and ultra-fast component system.
 - **Micro-interactions**: Fluid transitions and interactive elements that feel premium and responsive.
 
 ### ⚡ Technical Superiority
 
 - **Nuxt 3/4 Future-Ready**: Leveraging the latest in Vue and Nuxt innovation (SSR, Component Islands, Future Flags).
+- **Multilingual (i18n)**: Full internationalization support with localized routing and SEO.
 - **SEO Perfection**: Industry-leading SEO with `unhead` and `@nuxtjs/seo`, ensuring your spa ranks where it matters.
 - **Real-time Sync**: Seamless integration with **Laravel Echo** and **Pusher** for instant booking confirmations and state updates.
 
 ### 🛋️ Client Experience
 
 - **Fluid Checkout**: An optimized, multi-step booking and checkout flow designed for conversion.
+- **Progressive Web App (PWA)**: Installable on mobile devices with offline support and sync notifications.
 - **Live Catalog**: Dynamic treatment browsing with rich imagery and detailed service descriptions.
 - **Customer History**: Personalized dashboard for clients to track their wellness journey, vouchers, and upcoming sessions.
 
@@ -54,6 +57,10 @@ npm install
 
 # Start the premium experience
 npm run dev
+
+# (Optional) Seed the database for a full demo experience
+# In the SpaInformationSystem-API directory:
+php artisan migrate:fresh --seed
 ```
 
 ### Configuration

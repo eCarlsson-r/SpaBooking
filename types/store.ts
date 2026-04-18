@@ -9,6 +9,7 @@ export type Treatment = {
   id: number
   name: string
   price: number
+  duration: number
   description: string
   category: string
   image: string
