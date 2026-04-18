@@ -26,7 +26,7 @@ const localePath = useLocalePath()
         <img :src="`${$config.public.serverURL}${item.image}`" class="absolute inset-0 w-full h-full object-cover" draggable="false" >
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
           
-          <div class="px-6 sm:px-8 md:px-16 w-full text-center sm:text-left text-white space-y-4 sm:space-y-4">
+          <div class="px-6 sm:px-8 md:px-16 w-full text-center text-white space-y-4 sm:space-y-4">
             <h4 class="text-sm sm:text-base md:text-xl font-medium text-lime-400">
               {{ item.introduction }}
             </h4>
@@ -36,7 +36,7 @@ const localePath = useLocalePath()
             <h3 class="text-xl sm:text-3xl md:text-4xl font-semibold opacity-90">
               {{ item.subtitle }}
             </h3>
-            <p class="text-lg text-gray-200 line-clamp-3 sm:line-clamp-2 max-w-xl">
+            <p class="text-lg text-gray-200 line-clamp-3 sm:line-clamp-2">
               {{ item.description }}
             </p>
             <div class="pt-4 sm:pt-4">

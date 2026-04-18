@@ -25,7 +25,7 @@
       class="min-h-screen flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
     >
       <NavBar class="z-50" />
-      <main class="flex-grow pb-20 sm:pb-0">
+      <main class="flex-grow">
         <slot />
         <UNotifications />
         <BookingDrawer />
