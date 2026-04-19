@@ -1,7 +1,6 @@
 <script setup>
 const bookingStore = useBookingStore()
-const { $api } = useNuxtApp()
-const { data: branches, refresh: refreshBranches } = await useAsyncData('branches', () => $api('/branch'))
+const { data: branches, refresh: refreshBranches } = useBranches()
 useRealtimeSync({ 'branches': refreshBranches })
 </script>
 

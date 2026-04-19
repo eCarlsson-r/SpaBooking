@@ -8,9 +8,8 @@
 </template>
 
 <script setup>
-const { $api } = useNuxtApp();
 // useAsyncData is preferred over useFetch when using a custom fetcher
-const { data: categories, refresh: refreshCategories } = await useAsyncData('category', () => $api('/category'))
+const { data: categories, refresh: refreshCategories } = useCategories()
 
 // Just pass the map of types to their refresh functions
 useRealtimeSync({

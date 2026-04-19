@@ -1,9 +1,7 @@
 <script setup>
   const { t } = useI18n()
-  const { $api } = useNuxtApp();
   const { isLoggedIn } = useAuthStore();
-  // useAsyncData is preferred over useFetch when using a custom fetcher
-  const { data: branches, refresh: refreshBranches } = await useAsyncData('branches', () => $api('/branch'))
+  const { data: branches, refresh: refreshBranches } = useBranches()
 
   // Just pass the map of types to their refresh functions
   useRealtimeSync({

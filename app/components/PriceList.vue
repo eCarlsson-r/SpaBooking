@@ -23,6 +23,15 @@
 <template>
   <div v-if="currentCategoryData" class="flex flex-col min-h-[500px] overflow-hidden bg-white shadow-xl">
     <div class="flex-1 flex flex-col md:flex-row">
+      <!-- Image only on Desktop -->
+      <div class="hidden md:block w-1/2 relative overflow-hidden">
+        <img 
+          :src="currentCategoryData.header_img ? `${$config.public.serverURL}${currentCategoryData.header_img}` : 'price-tabs.webp'"
+          class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+          alt="Category Image"
+        >
+      </div>
+      
       <!-- Category Selection -->
       <div class="w-full bg-yellow-900 flex sm:flex-col overflow-x-auto sm:overflow-x-visible no-scrollbar sm:w-16 md:w-20">
         <button 
@@ -36,15 +45,6 @@
             {{ cat.name }}
           </span>
         </button>
-      </div>
-
-      <!-- Image only on Desktop -->
-      <div class="hidden md:block w-1/2 relative overflow-hidden">
-        <img 
-          :src="currentCategoryData.header_img ? `${$config.public.serverURL}${currentCategoryData.header_img}` : 'price-tabs.webp'"
-          class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-          alt="Category Image"
-        >
       </div>
 
       <div class="flex-1 p-6 sm:p-8 bg-stone-50 dark:bg-stone-950">

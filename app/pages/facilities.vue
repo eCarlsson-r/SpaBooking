@@ -15,9 +15,7 @@
 
 <script setup>
   const { t } = useI18n()
-  const { $api } = useNuxtApp();
-  // useAsyncData is preferred over useFetch when using a custom fetcher
-  const { data: rooms, refresh: refreshRooms } = await useAsyncData('room', () => $api('/room'))
+  const { data: rooms, refresh: refreshRooms } = useRoomData()
 
   // Just pass the map of types to their refresh functions
   useRealtimeSync({

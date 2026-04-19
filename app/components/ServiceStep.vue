@@ -1,8 +1,7 @@
 <script setup>
 const bookingStore = useBookingStore()
 const authStore = useAuthStore()
-const { $api } = useNuxtApp()
-const { data: categories, refresh: refreshCategories } = await useAsyncData('category', () => $api('/category'))
+const { data: categories, refresh: refreshCategories } = useCategories()
 useRealtimeSync({ 'category': refreshCategories })
 
 const handleTreatmentSelect = (treatment) => {
