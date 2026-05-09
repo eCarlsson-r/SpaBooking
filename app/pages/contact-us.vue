@@ -36,7 +36,7 @@
       <div 
         v-for="branch in branches" :key="branch.id"
         :class="[
-          'p-5 rounded-3xl border-2 transition-all cursor-pointer grid grid-cols-2 gap-3',
+          'p-5 rounded-3xl border-2 transition-all cursor-pointer grid grid-cols-1 md:grid-cols-2 gap-3',
           selectedBranch?.id === branch.id ? 'border-blue-600 bg-blue-50 dark:bg-transparent' : 'border-slate-100 bg-white dark:bg-transparent'
         ]"
         @click="selectedBranch = branch"

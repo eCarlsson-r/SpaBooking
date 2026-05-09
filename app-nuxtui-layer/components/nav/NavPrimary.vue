@@ -2,6 +2,7 @@
   const { navsPrimary } = useNavMenu()
   const { isMobileMenuOpen } = useMobileMenu()
   const localePath = useLocalePath()
+  const { t } = useI18n()
 </script>
 <template>
   <div
@@ -10,16 +11,15 @@
     <ULink
       v-for="(nav, index) in navsPrimary"
       :key="index"
-      :label="nav.title"
       :to="localePath(nav.to)"
       variant="link"
       class="hover:text-primary underline-offset-8"
       color="gray"
+      :label="t(nav.title)"
       active-class="text-primary underline"
       exact
       @click="isMobileMenuOpen = false"
-      >{{ nav.title }}</ULink
-    >
+    />
   </div>
 </template>
 <style scoped></style>
