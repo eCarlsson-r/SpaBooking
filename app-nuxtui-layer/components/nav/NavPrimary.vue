@@ -15,11 +15,12 @@
       variant="link"
       class="hover:text-primary underline-offset-8"
       color="gray"
-      :label="t(nav.title)"
       active-class="text-primary underline"
       exact
       @click="isMobileMenuOpen = false"
-    />
+    >
+      {{ t(nav.title) }}
+    </ULink>
   </div>
 </template>
 <style scoped></style>

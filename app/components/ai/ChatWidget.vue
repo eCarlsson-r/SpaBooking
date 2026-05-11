@@ -75,17 +75,11 @@ const sendMessageWithNavigation = async () => {
         message: text,
         session_id: chatStore.sessionId,
       },
-    }) as { response: ChatResponse; session_id: string }
+    }) as ChatResponse
 
-    const chatResponse = response.response
-
-    if (response.session_id) {
-      chatStore.$patch({ sessionId: response.session_id })
-    }
-
-    if (chatResponse.type === 'booking_intent') {
+    if (response.type === 'booking_intent') {
       // Navigate to checkout with pre-populated params
-      const { date, time, treatmentId, branchId } = chatResponse.params
+      const { date, time, treatmentId, branchId } = response.params
       messages.value.push({
         role: 'assistant',
         content: t('ai.foundBookingOption'),
@@ -97,30 +91,25 @@ const sendMessageWithNavigation = async () => {
         query: { date, time, treatmentId, branchId },
       })
       isOpen.value = false
-    } else if (chatResponse.type === 'clarification') {
+    } else if (response.type === 'data_response') {
       messages.value.push({
         role: 'assistant',
-        content: chatResponse.message,
+        content: response.formattedAnswer,
         timestamp: new Date().toISOString(),
       })
-    } else if (chatResponse.type === 'data_response') {
+    } else {
       messages.value.push({
         role: 'assistant',
-        content: chatResponse.formattedAnswer,
-        timestamp: new Date().toISOString(),
-      })
-    } else if (chatResponse.type === 'error') {
-      messages.value.push({
-        role: 'assistant',
-        content: chatResponse.message,
+        content: response.message,
         timestamp: new Date().toISOString(),
       })
       showFallback.value = true
     }
-  } catch {
+  } catch (error: any) {
+    console.info(error)
     messages.value.push({
       role: 'assistant',
-      content: t('ai.assistantUnavailable'),
+      content: error.response ? error.response.data.message : error.message,
       timestamp: new Date().toISOString(),
     })
     showFallback.value = true

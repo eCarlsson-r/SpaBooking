@@ -22,29 +22,29 @@ export default {
 
   navs: {
     primary: [
-      { title: 'Treatments', to: '/treatments', icon: 'i-mdi-home' },
-      { title: 'Vouchers', to: '/catalog', icon: 'i-mdi-home' },
-      { title: 'Facilities', to: '/facilities', icon: 'i-mdi-home' },
-      { title: 'Contact', to: '/contact-us', icon: 'i-material-symbols-add-call' }
+      { title: 'nav.treatments', to: '/treatments', icon: 'i-mdi-home' },
+      { title: 'nav.vouchers', to: '/catalog', icon: 'i-mdi-home' },
+      { title: 'nav.facilities', to: '/facilities', icon: 'i-mdi-home' },
+      { title: 'nav.contact', to: '/contact-us', icon: 'i-material-symbols-add-call' }
     ],
     secondary: [
       {
-        title: 'Profile',
+        title: 'nav.profile',
         to: '/profile',
         icon: 'i-material-symbols-account-circle-outline',
       },
       {
-        title: 'My Bookings',
+        title: 'nav.myBookings',
         to: '/bookings',
         icon: 'i-mdi-calendar',
       },
       {
-        title: 'My Vouchers',
+        title: 'nav.myVouchers',
         to: '/vouchers',
         icon: 'i-ci-ticket-voucher',
       },
       {
-        title: 'Purchase History',
+        title: 'nav.purchaseHistory',
         to: '/history',
         icon: 'i-ic-baseline-history',
       }

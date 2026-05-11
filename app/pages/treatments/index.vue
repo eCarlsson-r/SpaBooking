@@ -10,6 +10,7 @@
 <script setup>
 // useAsyncData is preferred over useFetch when using a custom fetcher
 const { data: categories, refresh: refreshCategories } = useCategories()
+const { t } = useI18n()
 
 // Just pass the map of types to their refresh functions
 useRealtimeSync({
