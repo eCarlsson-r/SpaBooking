@@ -13,6 +13,7 @@ const authStore = useAuthStore()
 const { isLoggedIn } = storeToRefs(authStore)
 
 const chatStore = useChatStore()
+const bookingStore = useBookingStore()
 const { messages, isTyping } = storeToRefs(chatStore)
 
 const { t } = useI18n()
@@ -73,23 +74,32 @@ const sendMessageWithNavigation = async () => {
       method: 'POST',
       body: {
         message: text,
-        session_id: chatStore.sessionId,
       },
     }) as ChatResponse
 
     if (response.type === 'booking_intent') {
-      // Navigate to checkout with pre-populated params
+      // Seed the normal booking wizard so the customer selects a room and therapist.
       const { date, time, treatmentId, branchId } = response.params
+      const { $api } = useNuxtApp()
+      const treatment = await ($api as any)(`/treatment/${treatmentId}`)
+      const branch = await ($api as any)(`/branch/${branchId}`)
+      bookingStore.resetSelection()
+      bookingStore.selection.branch_id = Number(branchId)
+      bookingStore.selection.branch = branch
+      bookingStore.selection.session_date = date
+      bookingStore.selection.session_time = time
+      bookingStore.selection.treatment_id = String(treatmentId)
+      bookingStore.selection.treatment = treatment
+      bookingStore.selection.price = Number(treatment.price)
+      bookingStore.currentStep = 'room'
+      bookingStore.isOpen = true
       messages.value.push({
         role: 'assistant',
         content: t('ai.foundBookingOption'),
         timestamp: new Date().toISOString(),
       })
       await nextTick()
-      await router.push({
-        path: '/checkout',
-        query: { date, time, treatmentId, branchId },
-      })
+      await router.push('/')
       isOpen.value = false
     } else if (response.type === 'data_response') {
       messages.value.push({

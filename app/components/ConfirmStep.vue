@@ -5,7 +5,7 @@ const { selection } = bookingStore
 
 const finalizeAndGoToPayment = () => {
   bookingStore.isOpen = false
-  navigateTo('/checkout/summary') 
+  navigateTo('/checkout')
 }
 </script>
 

@@ -60,7 +60,7 @@ export const useBookingStore = defineStore('booking', {
         await $api('/cart/session', { method: 'POST', body: payload })
         this.currentStep = 'confirm'
       } catch (e) {
-        // Handle error (e.g., therapist already booked for that duration)
+        throw e
       }
     },
     setBranch(branch: { id: number, name: string }) {

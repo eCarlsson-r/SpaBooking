@@ -30,8 +30,8 @@ export const useRecommendations = (
     try {
       const data = await $api<TreatmentRecommendation[]>('/ai/recommendations', {
         params: {
-          customerId: customerIdValue.value,
-          branchId: branchIdValue.value,
+          customer_id: customerIdValue.value,
+          branch_id: branchIdValue.value,
         },
       })
       recommendations.value = data ?? []

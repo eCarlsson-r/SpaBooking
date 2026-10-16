@@ -13,7 +13,8 @@ const { data: therapists, refresh: refreshTherapists } = await useAsyncData(
       branch_id: bookingStore.selection.branch_id, // Filter by branch!
       show: "therapist",
       date: bookingStore.selection.session_date,
-      time: bookingStore.selection.session_time
+      time: bookingStore.selection.session_time,
+      duration: bookingStore.selection.treatment?.duration
     }
   })
 )

@@ -14,12 +14,11 @@ vi.mock('vue-router', () => ({
 // Mock Pinia stores
 const mockMessages = ref<ChatMessage[]>([])
 const mockIsTyping = ref(false)
-const mockSessionId = ref<string | null>(null)
 const mockIsLoggedIn = ref(true)
+const mockBookingSelection = ref<Record<string, any>>({})
 
 const mockChatStorePatch = vi.fn((patch: Record<string, unknown>) => {
   if ('isTyping' in patch) mockIsTyping.value = patch.isTyping as boolean
-  if ('sessionId' in patch) mockSessionId.value = patch.sessionId as string
   if ('messages' in patch) mockMessages.value = patch.messages as ChatMessage[]
 })
 
@@ -45,7 +44,6 @@ vi.stubGlobal('useAuthStore', () => ({
 vi.stubGlobal('useChatStore', () => ({
   messages: mockMessages,
   isTyping: mockIsTyping,
-  sessionId: mockSessionId,
   $patch: mockChatStorePatch,
 }))
 
@@ -96,27 +94,23 @@ const buildWrapper = (overrides: {
           const { $api } = useNuxtApp()
           const response = await ($api as typeof mockApi)('/ai/chat', {
             method: 'POST',
-            body: { message: text, session_id: mockSessionId.value },
-          }) as { response: { type: string; params?: Record<string, string>; message?: string; formattedAnswer?: string }; session_id: string }
+            body: { message: text },
+          }) as { type: string; params?: Record<string, string>; message?: string; formattedAnswer?: string }
 
-          const chatResponse = response.response
-
-          if (response.session_id) {
-            mockChatStorePatch({ sessionId: response.session_id })
-          }
+          const chatResponse = response
 
           if (chatResponse.type === 'booking_intent') {
             const { date, time, treatmentId, branchId } = chatResponse.params!
+            const treatment = await ($api as typeof mockApi)(`/treatment/${treatmentId}`)
+            const branch = await ($api as typeof mockApi)(`/branch/${branchId}`)
+            mockBookingSelection.value = { branch_id: Number(branchId), branch, session_date: date, session_time: time, treatment_id: String(treatmentId), treatment, price: Number(treatment.price), currentStep: 'room', isOpen: true }
             mockMessages.value.push({
               role: 'assistant',
               content: 'I found a booking option for you. Taking you to checkout now...',
               timestamp: new Date().toISOString(),
             })
             const router = useRouter()
-            await router.push({
-              path: '/checkout',
-              query: { date, time, treatmentId, branchId },
-            })
+            await router.push('/')
             isOpen.value = false
           } else if (chatResponse.type === 'clarification') {
             mockMessages.value.push({
@@ -183,7 +177,6 @@ describe('ChatWidget', () => {
     mockMessages.value = []
     mockIsTyping.value = false
     mockIsLoggedIn.value = true
-    mockSessionId.value = null
   })
 
   // ── Requirement 4.8: Typing indicator ──────────────────────────────────────
@@ -213,7 +206,7 @@ describe('ChatWidget', () => {
       expect(wrapper.find('[data-testid="typing-indicator"]').exists()).toBe(true)
 
       // Resolve to clean up
-      resolveApi({ response: { type: 'clarification', message: 'What date?', missingField: 'date' }, session_id: 'abc' })
+      resolveApi({ type: 'clarification', message: 'What date?', missingField: 'date' })
       await flushPromises()
     })
   })
@@ -221,17 +214,19 @@ describe('ChatWidget', () => {
   // ── Requirement 4.3: Navigation to /checkout on booking_intent ─────────────
   describe('booking_intent navigation (Requirement 4.3)', () => {
     it('navigates to /checkout with correct query params on booking_intent response', async () => {
-      mockApi.mockResolvedValue({
-        response: {
+      mockApi.mockImplementation(async (path: string) => {
+        if (path === '/ai/chat') return {
           type: 'booking_intent',
           params: {
             date: '2025-08-01',
             time: '10:00',
             treatmentId: 'T001',
-            branchId: 'B001',
+            branchId: '1',
           },
-        },
-        session_id: 'sess-123',
+        }
+        if (path === '/treatment/T001') return { id: 'T001', name: 'Massage', price: 120000, duration: 60 }
+        if (path === '/branch/1') return { id: 1, name: 'Branch' }
+        return {}
       })
 
       const wrapper = buildWrapper()
@@ -239,21 +234,20 @@ describe('ChatWidget', () => {
       await wrapper.find('[data-testid="send-btn"]').trigger('click')
       await flushPromises()
 
-      expect(mockPush).toHaveBeenCalledWith({
-        path: '/checkout',
-        query: {
-          date: '2025-08-01',
-          time: '10:00',
-          treatmentId: 'T001',
-          branchId: 'B001',
-        },
+      expect(mockPush).toHaveBeenCalledWith('/')
+      expect(mockBookingSelection.value).toMatchObject({
+        branch_id: 1,
+        session_date: '2025-08-01',
+        session_time: '10:00',
+        treatment_id: 'T001',
+        currentStep: 'room',
+        isOpen: true,
       })
     })
 
     it('does not navigate when response is clarification', async () => {
       mockApi.mockResolvedValue({
-        response: { type: 'clarification', message: 'What date?', missingField: 'date' },
-        session_id: 'sess-456',
+        type: 'clarification', message: 'What date?', missingField: 'date',
       })
 
       const wrapper = buildWrapper()
@@ -269,8 +263,7 @@ describe('ChatWidget', () => {
   describe('fallback message (Requirement 4.6)', () => {
     it('shows fallback message with /bookings link when API returns error type', async () => {
       mockApi.mockResolvedValue({
-        response: { type: 'error', message: 'Service unavailable' },
-        session_id: 'sess-789',
+        type: 'error', message: 'Service unavailable',
       })
 
       const wrapper = buildWrapper()
@@ -296,8 +289,7 @@ describe('ChatWidget', () => {
 
     it('does not show fallback message on successful clarification response', async () => {
       mockApi.mockResolvedValue({
-        response: { type: 'clarification', message: 'What date?', missingField: 'date' },
-        session_id: 'sess-ok',
+        type: 'clarification', message: 'What date?', missingField: 'date',
       })
 
       const wrapper = buildWrapper()

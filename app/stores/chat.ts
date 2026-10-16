@@ -5,7 +5,6 @@ const MAX_HISTORY = 10
 export const useChatStore = defineStore('chat', () => {
   const messages = ref<ChatMessage[]>([])
   const isTyping = ref(false)
-  const sessionId = ref<string | null>(null)
 
   const { $api } = useNuxtApp()
 
@@ -20,15 +19,10 @@ export const useChatStore = defineStore('chat', () => {
     isTyping.value = true
 
     try {
-      const response = await $api('/ai/chat', {
+      const chatResponse = await $api('/ai/chat', {
         method: 'POST',
-        body: {
-          message,
-          session_id: sessionId.value,
-        },
-      }) as { response: ChatResponse; session_id: string }
-
-      const chatResponse = response.response
+        body: { message },
+      }) as ChatResponse
 
       // Determine assistant message content
       let content: string
@@ -49,9 +43,6 @@ export const useChatStore = defineStore('chat', () => {
         timestamp: new Date().toISOString(),
       })
 
-      if (response.session_id) {
-        sessionId.value = response.session_id
-      }
     } catch {
       messages.value.push({
         role: 'assistant',
@@ -70,9 +61,8 @@ export const useChatStore = defineStore('chat', () => {
 
   const clearHistory = () => {
     messages.value = []
-    sessionId.value = null
     isTyping.value = false
   }
 
-  return { messages, isTyping, sessionId, sendMessage, clearHistory }
+  return { messages, isTyping, sendMessage, clearHistory }
 })

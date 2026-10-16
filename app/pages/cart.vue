@@ -13,16 +13,7 @@
             useUIStore().openLogin();
             return;
         }
-        const {$api} = useNuxtApp();
-        // Logic to send data to Laravel and get Midtrans/Payment URL
-        const response = await $api('/cart', {
-            method: 'POST',
-            body: { items: cart.items }
-        });
-        
-        if (response.payment_url) {
-            window.location.href = response.payment_url;
-        }
+        await navigateTo('/checkout')
     }
 </script>
 

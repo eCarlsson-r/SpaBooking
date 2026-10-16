@@ -1,0 +1,113 @@
+[
+  {
+    "module_slug": "pwa-background-sync-queue",
+    "module_name": "PWA Background Sync Queue Manager",
+    "category": "other",
+    "description": "Client-side service worker queue that intercepts offline booking and cart submissions, buffers them in IndexedDB, and synchronizes with the backend upon network reconnection.",
+    "implementation_notes": "Implemented in app/sw-custom.ts, app/utils/offlineQueue.ts, and app/plugins/pwa.client.ts.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "e_commerce",
+      "mobile_forms",
+      "field_surveys",
+      "event_checkin"
+    ]
+  },
+  {
+    "module_slug": "customer-self-service-booking-wizard",
+    "module_name": "Customer Self-Service Booking Wizard",
+    "category": "booking",
+    "description": "Multi-step online appointment booking workflow allowing customers to select treatments, pick preferred therapists/beds, and schedule date/time slots.",
+    "implementation_notes": "Implemented in app/pages/bookings.vue and app/pages/treatments/index.vue.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "medical_appointments",
+      "beauty_salons",
+      "car_maintenance",
+      "personal_training"
+    ]
+  },
+  {
+    "module_slug": "customer-voucher-wallet",
+    "module_name": "Digital Customer Voucher Wallet",
+    "category": "inventory",
+    "description": "Digital voucher wallet interface where customers view purchased treatment vouchers, monitor redemption statuses, and apply vouchers directly to new bookings.",
+    "implementation_notes": "Implemented in app/pages/vouchers.vue and app/pages/cart.vue.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "loyalty_programs",
+      "class_passes",
+      "theme_parks",
+      "gift_cards"
+    ]
+  },
+  {
+    "module_slug": "ai-customer-concierge-chat",
+    "module_name": "AI Customer Concierge Assistant",
+    "category": "ai",
+    "description": "Conversational AI booking assistant embedded in the storefront UI, guiding customers through treatment inquiries and automated appointment scheduling.",
+    "implementation_notes": "Implemented in app/components/AiChat.vue and app/pages/index.vue.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "hospitality_concierge",
+      "retail_shopping_assistant",
+      "travel_booking"
+    ]
+  },
+  {
+    "module_slug": "post-session-feedback-prompt",
+    "module_name": "Real-Time Post-Session Feedback Prompt",
+    "category": "communication",
+    "description": "Listens to real-time WebSocket events upon session completion to trigger a non-intrusive feedback modal requesting rating and written customer review.",
+    "implementation_notes": "Implemented in app/components/FeedbackModal.vue and app/composables/useFeedbackPrompt.ts.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "ride_hailing",
+      "food_delivery",
+      "home_services",
+      "healthcare_visits"
+    ]
+  },
+  {
+    "module_slug": "treatment-catalog-discovery",
+    "module_name": "Service Catalog & Facility Discovery",
+    "category": "booking",
+    "description": "Searchable and category-filtered service catalog showcasing treatment descriptions, durations, pricing, dynamic promotional banners, and facility photos.",
+    "implementation_notes": "Implemented in app/pages/catalog.vue, app/pages/facilities.vue, and app/pages/treatments/index.vue.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "fitness_studios",
+      "course_catalog",
+      "restaurant_menus",
+      "spa_wellness"
+    ]
+  },
+  {
+    "module_slug": "booking-history-timeline",
+    "module_name": "Customer Booking History Timeline",
+    "category": "reporting",
+    "description": "Interactive historical log displaying completed, upcoming, and canceled customer appointments along with associated financial receipts.",
+    "implementation_notes": "Implemented in app/pages/history.vue and app/pages/profile.vue.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "healthcare_patient_portal",
+      "pet_care",
+      "auto_service_history",
+      "fitness_tracking"
+    ]
+  },
+  {
+    "module_slug": "push-notification-subscription-manager",
+    "module_name": "Web Push Notification Subscription Manager",
+    "category": "communication",
+    "description": "Manages browser Web Push subscription registration and VAPID key exchange to receive push notifications for appointment updates and promotions.",
+    "implementation_notes": "Implemented in app/composables/useWebPush.ts and app/plugins/push-notifications.ts.",
+    "portability": "high",
+    "reusable_for_industries": [
+      "news_and_media",
+      "e_commerce_alerts",
+      "fintech_notifications",
+      "event_updates"
+    ]
+  }
+]
